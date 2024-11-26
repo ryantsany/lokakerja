@@ -35,30 +35,31 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      // width: 270,
-                      width: 310,
+                    Expanded(
+                      child: SizedBox(
                       height: 40,
                       child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Search",
-                          hintStyle:
-                              TextStyle(color: Colors.black.withOpacity(0.5)),
-                          prefixIcon: Icon(
-                            Icons.search,
-                            color: Colors.black.withOpacity(0.5),
+                          decoration: InputDecoration(
+                            hintText: "Search",
+                            hintStyle:
+                                TextStyle(color: Colors.black.withOpacity(0.5)),
+                            prefixIcon: Icon(
+                              Icons.search,
+                              color: Colors.black.withOpacity(0.5),
+                            ),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            contentPadding:
+                                const EdgeInsets.only(left: 20, right: 20),
+                            filled: true,
+                            fillColor: Colors.white.withOpacity(0.7),
                           ),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          contentPadding:
-                              const EdgeInsets.only(left: 20, right: 20),
-                          filled: true,
-                          fillColor: Colors.white.withOpacity(0.7),
                         ),
-                      ),
                     ),
+                    ),
+                    
                     const SizedBox(
                       width: 10,
                     ),
