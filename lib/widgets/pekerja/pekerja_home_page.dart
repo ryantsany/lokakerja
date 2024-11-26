@@ -68,6 +68,51 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                     ),
                   ],
                 ),
+                const SizedBox(
+                  height: 35,
+                ),
+                const Center(
+                    child: Text(
+                  "LokaKerja!",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 2.0),
+                )
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Container(
+            padding: const EdgeInsets.only(left: 20, right: 20),
+            child: Column(
+              
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Pekerjaan aktif",
+                  style: TextStyle(
+                    color: Colors.black.withOpacity(0.7),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: 100,
+                  decoration: BoxDecoration(
+                    // color: Colors.blue,
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.black.withOpacity(0.1)),
+                  ),
+                  
+                ),
               ],
             ),
           ),
