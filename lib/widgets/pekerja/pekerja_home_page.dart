@@ -37,7 +37,8 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                   children: [
                     Container(
                       // width: 270,
-                      width: 330,
+                      width: 310,
+                      // width: MediaQuery.of(context).size.width,
                       height: 40,
                       child: TextField(
                         decoration: InputDecoration(
@@ -111,7 +112,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: Colors.black.withOpacity(0.1)),
                   ),
-                  
+
                 ),
               ],
             ),
