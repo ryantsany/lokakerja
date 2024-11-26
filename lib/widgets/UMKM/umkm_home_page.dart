@@ -15,25 +15,30 @@ class UMKMHomePage extends StatefulWidget {
 }
 
 class _UMKMHomePageState extends State<UMKMHomePage> {
-  int _currentIndex = 0; 
+  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
         children: [
-                    Container(
+          Container(
             height: 200,
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
             decoration: const BoxDecoration(
-              gradient: LinearGradient(colors: [
-                Color.fromARGB(255, 28, 125, 204),
-                Color.fromARGB(255, 150, 213, 234)
-              ], begin: Alignment.bottomLeft, end: Alignment.topRight),
+              gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 28, 125, 204),
+                  Color.fromARGB(255, 150, 213, 234)
+                ],
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+              ),
               borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20)),
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,31 +46,38 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                   Expanded(
-                      child: SizedBox(
+                    Container(
+                      width: 310,
                       height: 40,
                       child: TextField(
-                          decoration: InputDecoration(
-                            hintText: "Search",
-                            hintStyle:
-                                TextStyle(color: Colors.black.withOpacity(0.5)),
-                            prefixIcon: Icon(
-                              Icons.search,
-                              color: Colors.black.withOpacity(0.5),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            contentPadding:
-                                const EdgeInsets.only(left: 20, right: 20),
-                            filled: true,
-                            fillColor: Colors.white.withOpacity(0.7),
+                        decoration: InputDecoration(
+                          hintText: "Search",
+                          hintStyle: TextStyle(
+                            color: Colors.black.withOpacity(0.5),
                           ),
+                          prefixIcon: Icon(
+                            Icons.search,
+                            color: Colors.black.withOpacity(0.5),
+                          ),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          contentPadding:
+                              const EdgeInsets.only(left: 20, right: 20),
+                          filled: true,
+                          fillColor: Colors.white.withOpacity(0.7),
                         ),
+                      ),
                     ),
-                    ),
+<<<<<<< HEAD
                     Icon(
+=======
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const Icon(
+>>>>>>> ed46e3cbca7345d58f73bd3e6de4b923450e5e75
                       Icons.notifications,
                       color: Colors.white,
                     ),
@@ -75,14 +87,15 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                   height: 35,
                 ),
                 const Center(
-                    child: Text(
-                  "LokaKerja!",
-                  style: TextStyle(
+                  child: Text(
+                    "LokaKerja!",
+                    style: TextStyle(
                       color: Colors.white,
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
-                      letterSpacing: 2.0),
-                )
+                      letterSpacing: 2.0,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -90,23 +103,87 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
           const SizedBox(
             height: 20,
           ),
-    
-          const SizedBox(height: 20),
-          Center(
-            child: Text(
-              "Welcome, ${widget.username}!",
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
+          Container(
+            padding: const EdgeInsets.only(right: 25),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const SizedBox(
+                  height: 5,
+                ),
+                Container(
+                  height: 100,
+                  width: 165,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: Colors.black.withOpacity(0.1),
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "Jumlah Karyawan",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        "20",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 40,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  height: 100,
+                  width: 165,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(
+                      color: Colors.black.withOpacity(0.1),
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text(
+                        "Kontrak kerja Aktif",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15,
+                        ),
+                      ),
+                      SizedBox(height: 5),
+                      Text(
+                        "20",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 40,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ),
         ],
       ),
-
-      
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed, 
+        type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.window_sharp),
@@ -125,10 +202,10 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
             label: "Profil",
           ),
         ],
-        currentIndex: _currentIndex, 
+        currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
-            _currentIndex = index; 
+            _currentIndex = index;
           });
         },
       ),
