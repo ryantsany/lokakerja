@@ -43,7 +43,7 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                   children: [
                     Container(
                       // width: 270,
-                      width: 330,
+                      width: 310,
                       height: 40,
                       child: TextField(
                         decoration: InputDecoration(

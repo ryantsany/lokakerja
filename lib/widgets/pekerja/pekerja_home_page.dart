@@ -37,7 +37,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                   children: [
                     Container(
                       // width: 270,
-                      width: 330,
+                      width: 310,
                       height: 40,
                       child: TextField(
                         decoration: InputDecoration(
