@@ -11,6 +11,8 @@ class PekerjaHomePage extends StatefulWidget {
 }
 
 class _PekerjaHomePageState extends State<PekerjaHomePage> {
+  int _currentIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,8 +39,8 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                   children: [
                     Expanded(
                       child: SizedBox(
-                      height: 40,
-                      child: TextField(
+                        height: 40,
+                        child: TextField(
                           decoration: InputDecoration(
                             hintText: "Search",
                             hintStyle:
@@ -57,13 +59,12 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                             fillColor: Colors.white.withOpacity(0.7),
                           ),
                         ),
+                      ),
                     ),
-                    ),
-                    
                     const SizedBox(
                       width: 10,
                     ),
-                    Icon(
+                    const Icon(
                       Icons.notifications,
                       color: Colors.white,
                     ),
@@ -80,8 +81,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                       fontSize: 40,
                       fontWeight: FontWeight.bold,
                       letterSpacing: 2.0),
-                )
-                ),
+                )),
               ],
             ),
           ),
@@ -91,7 +91,6 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
           Container(
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
-              
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
@@ -103,7 +102,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                   ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Container(
                   height: 100,
@@ -112,12 +111,149 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: Colors.black.withOpacity(0.1)),
                   ),
-
+                  child: Row(
+                    children: [
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Icon(
+                        Icons.work,
+                        size: 50,
+                        color: Colors.black.withOpacity(0.7),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      const Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text("Nama: Dalel"),
+                          Text("Hobi: Mengocog"),
+                        ],
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "Kerja terdekat",
+                  style: TextStyle(
+                    color: Colors.black.withOpacity(0.7),
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                GridView.builder(
+                  shrinkWrap: true,
+                  itemCount: 10,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      mainAxisExtent: 200),
+                  itemBuilder: (context, index) {
+                    return Container(
+                      padding: const EdgeInsets.all(10),
+                      height: 50,
+                      decoration: BoxDecoration(
+                        border:
+                            Border.all(color: Colors.black.withOpacity(0.1)),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: const Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Icon(Icons.work, size: 50),
+                              Icon(
+                                Icons.bookmark,
+                                size: 30,
+                                color: Colors.grey,
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Koki",
+                            style: TextStyle(
+                                fontSize: 22, fontWeight: FontWeight.w600),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(Icons.access_time_filled),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "08.00 - 19.00",
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(Icons.location_on),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                "5 km",
+                                style: TextStyle(fontSize: 16),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(
+                  height: 20,
                 ),
               ],
             ),
           ),
         ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.window_sharp),
+            label: "Beranda",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.cases_outlined),
+            label: "Kontrak",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.group_rounded),
+            label: "Pekerja",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: "Profil",
+          ),
+        ],
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
       ),
     );
   }
