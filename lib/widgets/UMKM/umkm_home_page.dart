@@ -22,42 +22,34 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
     return Scaffold(
       body: ListView(
         children: [
-          
-          Container(
+                    Container(
             height: 200,
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
             decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color.fromARGB(255, 28, 125, 204),
-                  Color.fromARGB(255, 150, 213, 234),
-                ],
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-              ),
+              gradient: LinearGradient(colors: [
+                Color.fromARGB(255, 28, 125, 204),
+                Color.fromARGB(255, 150, 213, 234)
+              ], begin: Alignment.bottomLeft, end: Alignment.topRight),
               borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-              ),
+                  bottomLeft: Radius.circular(20),
+                  bottomRight: Radius.circular(20)),
             ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    
                     Container(
-                      width: 270,
+                      // width: 270,
+                      width: 310,
                       height: 40,
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: "Search",
-                          hintStyle: TextStyle(
-                            color: Colors.black.withOpacity(0.5),
-                          ),
+                          hintStyle:
+                              TextStyle(color: Colors.black.withOpacity(0.5)),
                           prefixIcon: Icon(
                             Icons.search,
                             color: Colors.black.withOpacity(0.5),
@@ -66,28 +58,42 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                             borderSide: BorderSide.none,
                             borderRadius: BorderRadius.circular(10),
                           ),
-                          contentPadding: const EdgeInsets.only(
-                            left: 20,
-                            right: 20,
-                          ),
+                          contentPadding:
+                              const EdgeInsets.only(left: 20, right: 20),
                           filled: true,
                           fillColor: Colors.white.withOpacity(0.7),
                         ),
                       ),
                     ),
-                    const SizedBox(width: 10),
-                    
-                    const Icon(
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Icon(
                       Icons.notifications,
                       color: Colors.white,
                     ),
                   ],
                 ),
+                const SizedBox(
+                  height: 35,
+                ),
+                const Center(
+                    child: Text(
+                  "LokaKerja!",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 2.0),
+                )
+                ),
               ],
             ),
           ),
-
-          
+          const SizedBox(
+            height: 20,
+          ),
+    
           const SizedBox(height: 20),
           Center(
             child: Text(

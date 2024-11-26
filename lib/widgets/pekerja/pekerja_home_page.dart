@@ -38,7 +38,6 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                     Container(
                       // width: 270,
                       width: 310,
-                      // width: MediaQuery.of(context).size.width,
                       height: 40,
                       child: TextField(
                         decoration: InputDecoration(
