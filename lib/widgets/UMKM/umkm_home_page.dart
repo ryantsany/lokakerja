@@ -43,7 +43,7 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                   children: [
                     Container(
                       // width: 270,
-                      width: 330,
+                      width: 300,
                       height: 40,
                       child: TextField(
                         decoration: InputDecoration(
@@ -64,9 +64,6 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                           fillColor: Colors.white.withOpacity(0.7),
                         ),
                       ),
-                    ),
-                    const SizedBox(
-                      width: 10,
                     ),
                     Icon(
                       Icons.notifications,
