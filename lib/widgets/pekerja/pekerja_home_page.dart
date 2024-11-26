@@ -36,7 +36,8 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: 270,
+                      // width: 270,
+                      width: 330,
                       height: 40,
                       child: TextField(
                         decoration: InputDecoration(
