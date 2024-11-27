@@ -202,14 +202,18 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                         ),
                         borderRadius: BorderRadius.circular(10),
                       ),
-                      child: const Column(
+                      child:  Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Icon(Icons.work, size: 50),
+                              Image.asset(
+                                "assets/keripikkoki.jpeg",
+                                height: 50,
+                                width: 50,
+                              ),
                         
                             ],
                           ),
