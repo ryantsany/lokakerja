@@ -30,7 +30,7 @@ class _LoginState extends State<Login> {
             height: 30,
           ),
           const Text(
-            "Welcome Back!",
+            "Selamat Datang!",
             style: TextStyle(
                 color: Color.fromARGB(255, 28, 125, 204),
                 fontSize: 28,
@@ -40,7 +40,7 @@ class _LoginState extends State<Login> {
             height: 20,
           ),
           Text(
-            "Please enter your details below",
+            "Tolong masukan detail anda dibawah ini",
             style: TextStyle(
               color: Colors.black.withOpacity(0.5),
             ),
@@ -75,7 +75,7 @@ class _LoginState extends State<Login> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              child: const Text("Log in", style: TextStyle(color: Colors.white, fontSize: 16),),
+              child: const Text("Masuk", style: TextStyle(color: Colors.white, fontSize: 16),),
             ),
           ),
         ],

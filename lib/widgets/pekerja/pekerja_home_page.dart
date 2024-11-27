@@ -16,9 +16,25 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
+      body: body(),
+      bottomNavigationBar: bottomNavigationBar(),
+    );
+  }
+
+  Widget body(){
+    return ListView(
         children: [
-          Container(
+          blueContainer(),
+          const SizedBox(
+            height: 20,
+          ),
+          mainContent(),
+        ],
+      );
+  }
+
+  Widget blueContainer(){
+    return Container(
             height: 200,
             width: MediaQuery.of(context).size.width,
             padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
@@ -58,7 +74,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                             filled: true,
                             fillColor: Colors.white.withOpacity(0.7),
                           ),
-                        ),
+                        ), 
                       ),
                     ),
                     const SizedBox(
@@ -84,17 +100,17 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                 )),
               ],
             ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Container(
+          );
+  }
+
+  Widget mainContent(){
+    return Container(
             padding: const EdgeInsets.only(left: 20, right: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Pekerjaan aktif",
+                  "Sedang dikerjakan",
                   style: TextStyle(
                     color: Colors.black.withOpacity(0.7),
                     fontSize: 20,
@@ -128,8 +144,10 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Nama: Dalel"),
-                          Text("Hobi: Mengocog"),
+                          Text("Rizky Cookies", style: TextStyle(fontWeight: FontWeight.w700)),
+                          Text("06.00 - 15.00", style: TextStyle(fontWeight: FontWeight.w600)),
+                          Text("Jl. Bali No. 25", style: TextStyle(fontWeight: FontWeight.w600)),
+                          Text("Bekerja hingga 20 November 2024", style: TextStyle(fontWeight: FontWeight.w600)),
                         ],
                       )
                     ],
@@ -156,68 +174,84 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                       crossAxisCount: 2,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
-                      mainAxisExtent: 200),
+                      mainAxisExtent: 170),
                   itemBuilder: (context, index) {
-                    return Container(
-                      padding: const EdgeInsets.all(10),
-                      height: 50,
-                      decoration: BoxDecoration(
-                        border:
-                            Border.all(color: Colors.black.withOpacity(0.1)),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Icon(Icons.work, size: 50),
-                              Icon(
-                                Icons.bookmark,
-                                size: 30,
-                                color: Colors.grey,
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "Koki",
-                            style: TextStyle(
-                                fontSize: 22, fontWeight: FontWeight.w600),
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(Icons.access_time_filled),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "08.00 - 19.00",
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(Icons.location_on),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                "5 km",
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ],
-                          ),
-                        ],
+                    return InkWell(
+                      onTap: (){  },
+                      child: Container(
+                        padding: const EdgeInsets.all(10),
+                        height: 50,
+                        decoration: BoxDecoration(
+                          border:
+                              Border.all(color: Colors.black.withOpacity(0.1)),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child:  Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                // Icon(Icons.work, size: 50),
+                                Container(
+                                  width: 50,
+                                  height: 50,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.all(Radius.circular(5)),
+                                    image: DecorationImage(
+                                      image: Image.asset("assets/keripikkoki.jpeg").image,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                  // ),
+                                ),
+                                // Icon(
+                                //   Icons.bookmark,
+                                //   size: 30,
+                                //   color: Colors.grey,
+                                // ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              "Koki",
+                              style: TextStyle(
+                                  fontSize: 22, fontWeight: FontWeight.w600),
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(Icons.access_time_filled, size: 16),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "08.00 - 19.00",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Icon(Icons.location_on, size: 16),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "5 km",
+                                  style: TextStyle(fontSize: 16),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     );
+                    
                   },
                 ),
                 const SizedBox(
@@ -225,26 +259,28 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                 ),
               ],
             ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
+          );
+  }
+
+  Widget bottomNavigationBar(){
+    return BottomNavigationBar(
+        selectedItemColor: Color.fromARGB(255, 28, 125, 204),
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
-            icon: Icon(Icons.window_sharp),
+            icon: Icon(Icons.window_rounded),
             label: "Beranda",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.cases_outlined),
-            label: "Kontrak",
+            icon: Icon(Icons.work),
+            label: "Pekerjaan",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.group_rounded),
-            label: "Pekerja",
+            icon: Icon(Icons.bookmark_rounded),
+            label: "Simpan",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.person_2_rounded),
             label: "Profil",
           ),
         ],
@@ -254,7 +290,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
             _currentIndex = index;
           });
         },
-      ),
-    );
+      );
   }
+
 }

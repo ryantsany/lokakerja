@@ -15,7 +15,12 @@ class _AuthPageState extends State<AuthPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: true,
-      body: SingleChildScrollView(
+      body: body(),
+    );
+  }
+
+  Widget body(){
+    return SingleChildScrollView(
         child: Container(
           decoration: const BoxDecoration(
             // color: Colors.blue,
@@ -75,8 +80,8 @@ class _AuthPageState extends State<AuthPage> {
                         children: [
                           Text(
                             isLogin
-                                ? "Don't have an account?"
-                                : "Already have an account?",
+                                ? "Belum memiliki akun?"
+                                : "Sudah memiliki akun?",
                           ),
                           TextButton(
                             onPressed: () => {
@@ -94,7 +99,7 @@ class _AuthPageState extends State<AuthPage> {
                                 }
                             },
                             child: Text(
-                              isLogin ? "Sign Up" : "Sign In",
+                              isLogin ? "Daftar" : "Masuk",
                               style: TextStyle(
                                   color: Color.fromARGB(255, 28, 125, 204)),
                             ),
@@ -108,7 +113,6 @@ class _AuthPageState extends State<AuthPage> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
