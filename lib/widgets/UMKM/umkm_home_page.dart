@@ -1,3 +1,4 @@
+import 'package:dpbo_kelompok/widgets/job_container.dart';
 import 'package:flutter/material.dart';
 
 class UMKMHomePage extends StatefulWidget {
@@ -16,6 +17,14 @@ class UMKMHomePage extends StatefulWidget {
 
 class _UMKMHomePageState extends State<UMKMHomePage> {
   int _currentIndex = 0;
+
+  final List<List<String>> _jobList = [
+    ["Nguli", "06.00 - 15.00", "2km"],
+    ["Fotografer", "07.00 - 16.00", "3km"],
+    ["Desain Logo", "08.00 - 17.00", "4km"],
+    ["Membuat Web", "09.00 - 18.00", "5km"],
+    ["Videografer", "10.00 - 19.00", "6km"],
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +130,7 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                 
                 GridView.builder(
                   shrinkWrap: true,
-                  itemCount: 10,
+                  itemCount: _jobList.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
                     crossAxisSpacing: 10,
@@ -129,97 +138,7 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                     mainAxisExtent: 200,
                   ),
                   itemBuilder: (context, index) {
-                    return Container(
-                      padding: const EdgeInsets.all(10),
-                      height: 50,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.black.withOpacity(0.1),
-                        ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child:  Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                width: 50,
-                                height: 50,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.all(Radius.circular(5)),
-                                  image: DecorationImage(
-                                    image: Image.asset("assets/keripikkoki.jpeg").image,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                
-                                // ),
-                              ),
-                        
-                            ],
-                          ),
-                          SizedBox(height: 10),
-                          Text(
-                            "Koki",
-                            style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Icon(Icons.access_time_filled),
-                              SizedBox(width: 5),
-                              Text(
-                                "08.00 - 19.00",
-                                style: TextStyle(fontSize: 16),
-                              ),
-                            ],
-                          ),
-                          
-                          SizedBox(height: 10),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(width:8),
-                              Text(
-                                "• Memasak keripik tempe",
-                                style: TextStyle(fontSize: 12),textAlign: TextAlign.left,
-                              ),
-
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(width:8),
-                              Text(
-                                "• Umur 20-30 tahun",
-                                style: TextStyle(fontSize: 12),textAlign: TextAlign.left,
-                              ),
-
-                            ],
-                          ),
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              SizedBox(width:8),
-                              Text(
-                                "• Darrel Kerja rrah",
-                                style: TextStyle(fontSize: 12),textAlign: TextAlign.left,
-                              ),
-
-                            ],
-                          ),
-                          
-                          
-                        ],
-                      ),
-                    );
+                    return JobContainer(jobTitle: _jobList[index][0], jobTime: _jobList[index][1], jobDistance: _jobList[index][2],);
                   },
                 ),
               ],

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "../job_container.dart";
 
 class PekerjaHomePage extends StatefulWidget {
   const PekerjaHomePage(
@@ -12,6 +13,14 @@ class PekerjaHomePage extends StatefulWidget {
 
 class _PekerjaHomePageState extends State<PekerjaHomePage> {
   int _currentIndex = 0;
+
+  final List<List<String>> _jobList = [
+    ["Nguli", "06.00 - 15.00", "2km"],
+    ["Fotografer", "07.00 - 16.00", "3km"],
+    ["Desain Logo", "08.00 - 17.00", "4km"],
+    ["Membuat Web", "09.00 - 18.00", "5km"],
+    ["Videografer", "10.00 - 19.00", "6km"],
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -169,89 +178,14 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                 ),
                 GridView.builder(
                   shrinkWrap: true,
-                  itemCount: 10,
+                  itemCount: _jobList.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10,
                       mainAxisExtent: 170),
                   itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: (){  },
-                      child: Container(
-                        padding: const EdgeInsets.all(10),
-                        height: 50,
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Colors.black.withOpacity(0.1)),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child:  Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // Icon(Icons.work, size: 50),
-                                Container(
-                                  width: 50,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                                    image: DecorationImage(
-                                      image: Image.asset("assets/keripikkoki.jpeg").image,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  // ),
-                                ),
-                                // Icon(
-                                //   Icons.bookmark,
-                                //   size: 30,
-                                //   color: Colors.grey,
-                                // ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Koki",
-                              style: TextStyle(
-                                  fontSize: 22, fontWeight: FontWeight.w600),
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Icon(Icons.access_time_filled, size: 16),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  "08.00 - 19.00",
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Icon(Icons.location_on, size: 16),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  "5 km",
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                    
+                    return JobContainer(jobTitle: _jobList[index][0], jobTime: _jobList[index][1], jobDistance: _jobList[index][2],);
                   },
                 ),
                 const SizedBox(
