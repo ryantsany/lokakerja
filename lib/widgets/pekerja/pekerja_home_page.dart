@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "../job_container.dart";
+import "../bottom_nav.dart";
 
 class PekerjaHomePage extends StatefulWidget {
   const PekerjaHomePage(
@@ -22,13 +23,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
     ["Videografer", "10.00 - 19.00", "6km"],
   ];
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: body(),
-      bottomNavigationBar: bottomNavigationBar(),
-    );
-  }
+  
 
   Widget body(){
     return ListView(
@@ -196,35 +191,20 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
           );
   }
 
-  Widget bottomNavigationBar(){
-    return BottomNavigationBar(
-        selectedItemColor: Color.fromARGB(255, 28, 125, 204),
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.window_rounded),
-            label: "Beranda",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.work),
-            label: "Pekerjaan",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark_rounded),
-            label: "Simpan",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_2_rounded),
-            label: "Profil",
-          ),
-        ],
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _currentIndex == 0
+          ? body() 
+          : Center(child: Text("Page $_currentIndex")), 
+      bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
           });
         },
-      );
+      ),
+    );
   }
 
 }

@@ -1,4 +1,5 @@
 import 'package:dpbo_kelompok/widgets/job_container.dart';
+import 'package:dpbo_kelompok/widgets/bottom_nav.dart';
 import 'package:flutter/material.dart';
 
 class UMKMHomePage extends StatefulWidget {
@@ -26,13 +27,7 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
     ["Videografer", "10.00 - 19.00", "6km"],
   ];
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: body(),
-      bottomNavigationBar: bottomNavigationBar(),
-    );
-  }
+ 
 
   Widget body(){
     return ListView(
@@ -219,34 +214,19 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
           );
   }
 
-  Widget bottomNavigationBar(){
-    return BottomNavigationBar(
-        selectedItemColor: Color.fromARGB(255, 28, 125, 204),
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.window_sharp),
-            label: "Beranda",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.work),
-            label: "Kontrak",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group_rounded),
-            label: "Pekerja",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_2_rounded),
-            label: "Profil",
-          ),
-        ],
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _currentIndex == 0
+          ? body() 
+          : Center(child: Text("Page $_currentIndex")), 
+      bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
           });
         },
-      );
+      ),
+    );
   }
 }
