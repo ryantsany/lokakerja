@@ -20,94 +20,16 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ListView(
-        children: [
-          
-          Container(
-            height: 200,
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Color.fromARGB(255, 28, 125, 204),
-                  Color.fromARGB(255, 150, 213, 234),
-                ],
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-              ),
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(20),
-                bottomRight: Radius.circular(20),
-              ),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    // Search Bar
-                    Container(
-                      width: 310,
-                      height: 40,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: "Search",
-                          hintStyle: TextStyle(
-                            color: Colors.black.withOpacity(0.5),
-                          ),
-                          prefixIcon: Icon(
-                            Icons.search,
-                            color: Colors.black.withOpacity(0.5),
-                          ),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          contentPadding:
-                              const EdgeInsets.only(left: 20, right: 20),
-                          filled: true,
-                          fillColor: Colors.white.withOpacity(0.7),
-                        ),
-                      ),
-                    ),
-<<<<<<< HEAD
-<<<<<<< HEAD
-                    Icon(
-=======
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    const Icon(
->>>>>>> ed46e3cbca7345d58f73bd3e6de4b923450e5e75
-                      Icons.notifications,
-                      color: Colors.white,
-                    ),
-=======
-                    const SizedBox(width: 10),
-                    const Icon(Icons.notifications, color: Colors.white),
->>>>>>> c05f3927d4461216444531df4c3d804153a92b88
-                  ],
-                ),
-                const SizedBox(height: 35),
-                const Center(
-                  child: Text(
-                    "LokaKerja!",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2.0,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 20),
+      body: body(),
+      bottomNavigationBar: bottomNavigationBar(),
+    );
+  }
 
-          
+  Widget body(){
+    return ListView(
+        children: [
+          blueContainer(),
+          const SizedBox(height: 20),
           Container(
             padding: const EdgeInsets.only(right: 25,left: 25,bottom: 5),
             child: Row(
@@ -223,10 +145,18 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Image.asset(
-                                "assets/keripikkoki.jpeg",
-                                height: 50,
+                              Container(
                                 width: 50,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                                  image: DecorationImage(
+                                    image: Image.asset("assets/keripikkoki.jpeg").image,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                                
+                                // ),
                               ),
                         
                             ],
@@ -296,10 +226,83 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
             ),
           ),
         ],
-      ),
+      );
+  }
 
-      
-      bottomNavigationBar: BottomNavigationBar(
+  Widget blueContainer(){
+    return Container(
+            height: 200,
+            width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 28, 125, 204),
+                  Color.fromARGB(255, 150, 213, 234),
+                ],
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
+              ),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Search Bar
+                    Expanded(
+                      child: SizedBox(
+                        height: 40,
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: "Search",
+                            hintStyle:
+                                TextStyle(color: Colors.black.withOpacity(0.5)),
+                            prefixIcon: Icon(
+                              Icons.search,
+                              color: Colors.black.withOpacity(0.5),
+                            ),
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            contentPadding:
+                                const EdgeInsets.only(left: 20, right: 20),
+                            filled: true,
+                            fillColor: Colors.white.withOpacity(0.7),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 10),
+                    const Icon(Icons.notifications, color: Colors.white),
+                  ],
+                ),
+                const SizedBox(height: 35),
+                const Center(
+                  child: Text(
+                    "LokaKerja!",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 2.0,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+  }
+
+  Widget bottomNavigationBar(){
+    return BottomNavigationBar(
+        selectedItemColor: Color.fromARGB(255, 28, 125, 204),
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
@@ -307,7 +310,7 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
             label: "Beranda",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.cases_outlined),
+            icon: Icon(Icons.work),
             label: "Kontrak",
           ),
           BottomNavigationBarItem(
@@ -315,7 +318,7 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
             label: "Pekerja",
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.person_2_rounded),
             label: "Profil",
           ),
         ],
@@ -325,7 +328,6 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
             _currentIndex = index;
           });
         },
-      ),
-    );
+      );
   }
 }

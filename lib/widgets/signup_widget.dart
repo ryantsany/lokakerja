@@ -33,7 +33,7 @@ class _SignupState extends State<Signup> {
             height: 30,
           ),
           const Text(
-            "Welcome!",
+            "Selamat Datang!",
             style: TextStyle(
                 color: Color.fromARGB(255, 28, 125, 204),
                 fontSize: 28,
@@ -43,7 +43,7 @@ class _SignupState extends State<Signup> {
             height: 20,
           ),
           Text(
-            "Please enter your details below",
+            "Tolong masukan detail anda dibawah ini",
             style: TextStyle(
               color: Colors.black.withOpacity(0.5),
             ),
@@ -71,7 +71,7 @@ class _SignupState extends State<Signup> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "Select your role:",
+                "Pilih peran anda:",
                 style: TextStyle(
                   color: Colors.black.withOpacity(0.5),
                 ),
@@ -121,7 +121,7 @@ class _SignupState extends State<Signup> {
                   borderRadius: BorderRadius.circular(10),
                 ),
               ),
-              child: const Text("Sign Up", style: TextStyle(color: Colors.white, fontSize: 16),),
+              child: const Text("Daftar", style: TextStyle(color: Colors.white, fontSize: 16),),
             ),
           ),
         ],
