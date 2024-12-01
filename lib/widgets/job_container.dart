@@ -5,7 +5,7 @@ class JobContainer extends StatelessWidget{
   String jobTime;
   String jobDistance;
 
-  JobContainer({required this.jobTitle, required this.jobTime, required this.jobDistance});
+  JobContainer({super.key, required this.jobTitle, required this.jobTime, required this.jobDistance});
 
   @override
   Widget build(BuildContext context){

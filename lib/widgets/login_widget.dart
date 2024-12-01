@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'input_text_field.dart';
 import '../pages/home_page.dart';
+import './custom_button.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -66,16 +67,13 @@ class _LoginState extends State<Login> {
               ], begin: Alignment.centerLeft, end: Alignment.centerRight),
               borderRadius: BorderRadius.all(Radius.circular(10)),
             ),
-            child: TextButton(
-              onPressed: () => {Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage(username: _usernameController.text, password: _passwordController.text)))},            
-              style: TextButton.styleFrom(
-                backgroundColor: Colors.transparent,
-                shadowColor: Colors.transparent,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-                ),
-              ),
-              child: const Text("Masuk", style: TextStyle(color: Colors.white, fontSize: 16),),
+            child: CustomButton(
+              text: "Masuk",
+              onPressed: () {
+                Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => HomePage(username: _usernameController.text, password: _passwordController.text)),
+                );
+              },
             ),
           ),
         ],
