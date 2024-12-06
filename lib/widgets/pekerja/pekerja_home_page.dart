@@ -1,8 +1,15 @@
 import "package:flutter/material.dart";
+import "package:lokakerja/widgets/custom_top_bar.dart";
+import "package:lokakerja/widgets/pekerja/pekerja_profile_page.dart";
+import "../job_container.dart";
+import "../pekerja_bottom_nav.dart";
+import 'pekerja_pekerjaan_page.dart';
+import 'pekerja_profile_page.dart';
+import 'pekerja_simpan_page.dart';
+
 
 class PekerjaHomePage extends StatefulWidget {
-  const PekerjaHomePage(
-      {super.key, required this.username, required this.password});
+  const PekerjaHomePage({super.key, required this.username, required this.password});
   final String username;
   final String password;
 
@@ -13,284 +20,188 @@ class PekerjaHomePage extends StatefulWidget {
 class _PekerjaHomePageState extends State<PekerjaHomePage> {
   int _currentIndex = 0;
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: body(),
-      bottomNavigationBar: bottomNavigationBar(),
+  final List<List<String>> _jobList = [
+    ["Fotografer", "07.00 - 16.00", "3km"],
+    ["Desain Logo", "08.00 - 17.00", "4km"],
+    ["Membuat Web", "09.00 - 18.00", "5km"],
+    ["Videografer", "10.00 - 19.00", "6km"],
+  ];
+
+  Widget body() {
+    return Column(
+      children: [
+        CustomTopBar(title: "LokaKerja", icon: Icons.notifications,),
+        const SizedBox(
+          height: 20,
+        ),
+        mainContent(),
+      ],
     );
   }
 
-  Widget body(){
-    return ListView(
+  Widget blueContainer(BuildContext context) {
+    return Container(
+      height: 65,
+      width: MediaQuery.of(context).size.width,
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 17),
+      decoration:  BoxDecoration(
+        gradient: const LinearGradient(colors: [
+          Color.fromARGB(255, 28, 125, 204),
+          Color.fromARGB(255, 150, 213, 234)
+        ], begin: Alignment.bottomLeft, end: Alignment.topRight),
+        borderRadius: const BorderRadius.only(
+            bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.2),
+            spreadRadius: 1,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
+      ),
+      child: const Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          blueContainer(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                  child: Text(
+                "LokaKerja!",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    letterSpacing: 1.5),
+              )),
+              const SizedBox(
+                width: 10,
+              ),
+              const Icon(
+                Icons.notifications,
+                color: Colors.white,
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget mainContent() {
+    return Container(
+      padding: const EdgeInsets.only(left: 20, right: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Sedang dikerjakan",
+            style: TextStyle(
+              color: Colors.black.withOpacity(0.7),
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: 100,
+            decoration: BoxDecoration(
+              // color: Colors.blue,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: Colors.black.withOpacity(0.1)),
+            ),
+            child: Row(
+              children: [
+                const SizedBox(
+                  width: 10,
+                ),
+                Icon(
+                  Icons.work,
+                  size: 50,
+                  color: Colors.black.withOpacity(0.7),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                const Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Rizky Cookies",
+                        style: TextStyle(fontWeight: FontWeight.w700)),
+                    Text("06.00 - 15.00",
+                        style: TextStyle(fontWeight: FontWeight.w600)),
+                    Text("Jl. Bali No. 25",
+                        style: TextStyle(fontWeight: FontWeight.w600)),
+                    Text("Bekerja hingga 20 November 2024",
+                        style: TextStyle(fontWeight: FontWeight.w600)),
+                  ],
+                )
+              ],
+            ),
+          ),
           const SizedBox(
             height: 20,
           ),
-          mainContent(),
-        ],
-      );
-  }
-
-  Widget blueContainer(){
-    return Container(
-            height: 200,
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(colors: [
-                Color.fromARGB(255, 28, 125, 204),
-                Color.fromARGB(255, 150, 213, 234)
-              ], begin: Alignment.bottomLeft, end: Alignment.topRight),
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(20),
-                  bottomRight: Radius.circular(20)),
+          Text(
+            "Kerja terdekat",
+            style: TextStyle(
+              color: Colors.black.withOpacity(0.7),
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Expanded(
-                      child: SizedBox(
-                        height: 40,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            hintText: "Search",
-                            hintStyle:
-                                TextStyle(color: Colors.black.withOpacity(0.5)),
-                            prefixIcon: Icon(
-                              Icons.search,
-                              color: Colors.black.withOpacity(0.5),
-                            ),
-                            border: OutlineInputBorder(
-                              borderSide: BorderSide.none,
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            contentPadding:
-                                const EdgeInsets.only(left: 20, right: 20),
-                            filled: true,
-                            fillColor: Colors.white.withOpacity(0.7),
-                          ),
-                        ), 
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                    const Icon(
-                      Icons.notifications,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 35,
-                ),
-                const Center(
-                    child: Text(
-                  "LokaKerja!",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold,
-                      letterSpacing: 2.0),
-                )),
-              ],
-            ),
-          );
-  }
-
-  Widget mainContent(){
-    return Container(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Sedang dikerjakan",
-                  style: TextStyle(
-                    color: Colors.black.withOpacity(0.7),
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                Container(
-                  height: 100,
-                  decoration: BoxDecoration(
-                    // color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.black.withOpacity(0.1)),
-                  ),
-                  child: Row(
-                    children: [
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Icon(
-                        Icons.work,
-                        size: 50,
-                        color: Colors.black.withOpacity(0.7),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      const Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Rizky Cookies", style: TextStyle(fontWeight: FontWeight.w700)),
-                          Text("06.00 - 15.00", style: TextStyle(fontWeight: FontWeight.w600)),
-                          Text("Jl. Bali No. 25", style: TextStyle(fontWeight: FontWeight.w600)),
-                          Text("Bekerja hingga 20 November 2024", style: TextStyle(fontWeight: FontWeight.w600)),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  "Kerja terdekat",
-                  style: TextStyle(
-                    color: Colors.black.withOpacity(0.7),
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                GridView.builder(
-                  shrinkWrap: true,
-                  itemCount: 10,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 10,
-                      mainAxisSpacing: 10,
-                      mainAxisExtent: 170),
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: (){  },
-                      child: Container(
-                        padding: const EdgeInsets.all(10),
-                        height: 50,
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(color: Colors.black.withOpacity(0.1)),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child:  Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // Icon(Icons.work, size: 50),
-                                Container(
-                                  width: 50,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.all(Radius.circular(5)),
-                                    image: DecorationImage(
-                                      image: Image.asset("assets/keripikkoki.jpeg").image,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  // ),
-                                ),
-                                // Icon(
-                                //   Icons.bookmark,
-                                //   size: 30,
-                                //   color: Colors.grey,
-                                // ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 10,
-                            ),
-                            Text(
-                              "Koki",
-                              style: TextStyle(
-                                  fontSize: 22, fontWeight: FontWeight.w600),
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Icon(Icons.access_time_filled, size: 16),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  "08.00 - 19.00",
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Icon(Icons.location_on, size: 16),
-                                const SizedBox(
-                                  width: 5,
-                                ),
-                                Text(
-                                  "5 km",
-                                  style: TextStyle(fontSize: 16),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                    
-                  },
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-              ],
-            ),
-          );
-  }
-
-  Widget bottomNavigationBar(){
-    return BottomNavigationBar(
-        selectedItemColor: Color.fromARGB(255, 28, 125, 204),
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.window_rounded),
-            label: "Beranda",
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.work),
-            label: "Pekerjaan",
+          const SizedBox(
+            height: 10,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.bookmark_rounded),
-            label: "Simpan",
+          GridView.builder(
+            shrinkWrap: true,
+            itemCount: _jobList.length,
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                mainAxisExtent: 170),
+            itemBuilder: (context, index) {
+              return JobContainer(
+                jobTitle: _jobList[index][0],
+                jobTime: _jobList[index][1],
+                jobDistance: _jobList[index][2],
+              );
+            },
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person_2_rounded),
-            label: "Profil",
+          const SizedBox(
+            height: 20,
           ),
         ],
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: _currentIndex == 0
+          ? body()
+          : _currentIndex == 3
+              ? ProfilePage()
+              : _currentIndex == 2
+                  ? Center(child: Text("Halaman simpanan"))
+                  : _currentIndex == 1
+                      ? Center(child: Text("Halaman pekerjaan"))
+                      : body(),
+      bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
           });
         },
-      );
+      ),
+    );
   }
-
 }
+

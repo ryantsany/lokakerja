@@ -1,5 +1,5 @@
-name: dpbo_kelompok
-description: "A new Flutter project."
+name: lokakerja
+description: "An app for job seekers to find job vacancies and UMKM to find employee."
 publish_to: 'none'
 version: 0.1.0
 
@@ -19,3 +19,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/keripikkoki.jpeg
+    - assets/rappa.png
