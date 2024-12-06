@@ -43,11 +43,11 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
       width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.only(left: 20, right: 20, top: 17),
       decoration:  BoxDecoration(
-        gradient: LinearGradient(colors: [
+        gradient: const LinearGradient(colors: [
           Color.fromARGB(255, 28, 125, 204),
           Color.fromARGB(255, 150, 213, 234)
         ], begin: Alignment.bottomLeft, end: Alignment.topRight),
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
             bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5)),
         boxShadow: [
           BoxShadow(
@@ -82,18 +82,6 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
               ),
             ],
           ),
-          // const SizedBox(
-          //   height: 35,
-          // ),
-          // const Center(
-          //     child: Text(
-          //   "LokaKerja!",
-          //   style: TextStyle(
-          //       color: Colors.white,
-          //       fontSize: 40,
-          //       fontWeight: FontWeight.bold,
-          //       letterSpacing: 2.0),
-          // )),
         ],
       ),
     );
