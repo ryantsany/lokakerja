@@ -1,11 +1,13 @@
 import "package:flutter/material.dart";
 import "package:lokakerja/widgets/pekerja/pekerja_profile_page.dart";
 import "../job_container.dart";
-import "../bottom_nav.dart";
+import "../pekerja_bottom_nav.dart";
+import 'pekerja_pekerjaan_page.dart';
+import 'pekerja_profile_page.dart';
+import 'pekerja_simpan_page.dart';
 
 class PekerjaHomePage extends StatefulWidget {
-  const PekerjaHomePage(
-      {super.key, required this.username, required this.password});
+  const PekerjaHomePage({super.key, required this.username, required this.password});
   final String username;
   final String password;
 
@@ -189,6 +191,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
     );
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: _currentIndex == 0
@@ -211,3 +214,4 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
     );
   }
 }
+
