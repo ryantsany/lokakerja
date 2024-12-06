@@ -71,7 +71,7 @@ class ProfilePage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          CustomTopBar(),
+          CustomTopBar(title: "Profile", icon: Icons.settings_rounded),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.all(16.0),

@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:lokakerja/widgets/custom_top_bar.dart";
 import "package:lokakerja/widgets/pekerja/pekerja_profile_page.dart";
 import "../job_container.dart";
 import "../pekerja_bottom_nav.dart";
@@ -28,7 +29,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
   Widget body() {
     return ListView(
       children: [
-        blueContainer(context),
+        CustomTopBar(title: "LokaKerja", icon: Icons.notifications,),
         const SizedBox(
           height: 20,
         ),

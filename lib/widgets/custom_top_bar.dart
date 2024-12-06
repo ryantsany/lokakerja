@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
 
 class CustomTopBar extends StatelessWidget {
-  const CustomTopBar({Key? key}) : super(key: key);
+  const CustomTopBar({Key? key, required this.title, required this.icon});
+  final String title;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,7 @@ class CustomTopBar extends StatelessWidget {
           ),
         ],
       ),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
@@ -33,7 +35,7 @@ class CustomTopBar extends StatelessWidget {
             children: [
               Expanded(
                   child: Text(
-                "Profil",
+                title,
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -43,8 +45,8 @@ class CustomTopBar extends StatelessWidget {
               const SizedBox(
                 width: 10,
               ),
-              const Icon(
-                Icons.notifications,
+              Icon(
+                icon,
                 color: Colors.white,
               ),
             ],

@@ -7,7 +7,7 @@ class KontrakPage extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          CustomTopBar(),
+          CustomTopBar(title: "Kontrak", icon: Icons.settings_rounded),
         ],
       ),
     );
