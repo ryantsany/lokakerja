@@ -1,6 +1,7 @@
 import 'package:dpbo_kelompok/widgets/job_container.dart';
-import 'package:dpbo_kelompok/widgets/bottom_nav.dart';
+import 'package:dpbo_kelompok/widgets/umkm_bottom_nav.dart';
 import 'package:flutter/material.dart';
+import 'umkm_profile_page.dart';
 
 class UMKMHomePage extends StatefulWidget {
   const UMKMHomePage({
@@ -218,7 +219,9 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
     return Scaffold(
       body: _currentIndex == 0
           ? body() 
-          : Center(child: Text("Page $_currentIndex")), 
+          : _currentIndex == 3
+          ? ProfilePage()
+          : body(), 
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
