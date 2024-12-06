@@ -19,3 +19,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/keripikkoki.jpeg
+    - assets/rappa.png

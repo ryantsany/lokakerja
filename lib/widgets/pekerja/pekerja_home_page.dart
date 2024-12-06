@@ -28,7 +28,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
   Widget body() {
     return ListView(
       children: [
-        blueContainer(),
+        blueContainer(context),
         const SizedBox(
           height: 20,
         ),
@@ -37,7 +37,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
     );
   }
 
-  Widget blueContainer() {
+  Widget blueContainer(BuildContext context) {
     return Container(
       height: 65,
       width: MediaQuery.of(context).size.width,
