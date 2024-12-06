@@ -1,27 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:lokakerja/widgets/custom_top_bar.dart';
-
-
+import 'package:lokakerja/widgets/input_text_field.dart';
 
 class ProfilePage extends StatelessWidget {
+  final TextEditingController _namaUsahaController = TextEditingController();
+  final TextEditingController _kategoriController = TextEditingController();
+  final TextEditingController _namaPerusahaanController = TextEditingController();
+  final TextEditingController _namaPemilikController = TextEditingController();
+
   Widget blueContainer(BuildContext context) {
     return Container(
       height: 70,
       width: MediaQuery.of(context).size.width,
       padding: const EdgeInsets.only(left: 20, right: 20, top: 29),
-      decoration:  BoxDecoration(
-        gradient: LinearGradient(colors: [
-          Color.fromARGB(255, 28, 125, 204),
-          Color.fromARGB(255, 150, 213, 234)
-        ], begin: Alignment.bottomLeft, end: Alignment.topRight),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [
+            Color.fromARGB(255, 28, 125, 204),
+            Color.fromARGB(255, 150, 213, 234),
+          ],
+          begin: Alignment.bottomLeft,
+          end: Alignment.topRight,
+        ),
         borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5)),
+          bottomLeft: Radius.circular(5),
+          bottomRight: Radius.circular(5),
+        ),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.2),
             spreadRadius: 1,
             blurRadius: 5,
-            offset: const Offset(0, 3),
+            offset: Offset(0, 3),
           ),
         ],
       ),
@@ -32,35 +42,23 @@ class ProfilePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Expanded(
-                  child: Text(
-                "Profil",
-                style: TextStyle(
+                child: Text(
+                  "Profil",
+                  style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    letterSpacing: 1.5),
-              )),
-              const SizedBox(
-                width: 10,
+                    letterSpacing: 1.5,
+                  ),
+                ),
               ),
-              const Icon(
+              SizedBox(width: 10),
+              Icon(
                 Icons.notifications,
                 color: Colors.white,
               ),
             ],
           ),
-          // const SizedBox(
-          //   height: 35,
-          // ),
-          // const Center(
-          //     child: Text(
-          //   "LokaKerja!",
-          //   style: TextStyle(
-          //       color: Colors.white,
-          //       fontSize: 40,
-          //       fontWeight: FontWeight.bold,
-          //       letterSpacing: 2.0),
-          // )),
         ],
       ),
     );
@@ -79,54 +77,56 @@ class ProfilePage extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 50,
-                    backgroundImage:
-                        AssetImage('assets/rappa.png'), 
+                    backgroundImage: AssetImage('assets/rappa.png'),
                   ),
                   SizedBox(height: 16),
                   Text(
                     "Ubah Profil",
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   SizedBox(height: 24),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Nama Usaha",
-                      border: OutlineInputBorder(),
-                    ),
+
+                  
+                  InputTextField(
+                    icon: Icons.business,
+                    placeholder: "Nama Usaha",
+                    controller: _namaUsahaController,
                   ),
                   SizedBox(height: 16),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Kategori",
-                      border: OutlineInputBorder(),
-                    ),
+
+                  
+                  InputTextField(
+                    icon: Icons.category_rounded,
+                    placeholder: "Kategori",
+                    controller: _kategoriController,
                   ),
                   SizedBox(height: 16),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Nama Perusahaan",
-                      border: OutlineInputBorder(),
-                    ),
+
+                  
+                  InputTextField(
+                    icon: Icons.business_outlined,
+                    placeholder: "Nama Perusahaan",
+                    controller: _namaPerusahaanController,
                   ),
                   SizedBox(height: 16),
-                  TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Nama Perusahaan",
-                      border: OutlineInputBorder(),
-                    ),
+
+                  
+                  InputTextField(
+                    icon: Icons.person,
+                    placeholder: "Nama Perusahaan",
+                    controller: _namaPemilikController,
                   ),
                   SizedBox(height: 32),
+
+                  
                   ElevatedButton(
                     onPressed: () {
-                      
+                      print('Profil disimpan');
                     },
-                    child: Text("Simpan" ,style: TextStyle(color: Colors.white),),
+                    child: Text("Simpan", style: TextStyle(color: Colors.white)),
                     style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 50),
-                      backgroundColor: const Color.fromRGBO(83,164,215,1), 
+                      backgroundColor: Color.fromRGBO(83, 164, 215, 1),
                     ),
                   ),
                 ],
@@ -135,7 +135,7 @@ class ProfilePage extends StatelessWidget {
           ),
         ],
       ),
-      
     );
   }
 }
+
