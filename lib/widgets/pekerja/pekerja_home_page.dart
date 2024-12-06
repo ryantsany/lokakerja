@@ -27,7 +27,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
   ];
 
   Widget body() {
-    return ListView(
+    return Column(
       children: [
         CustomTopBar(title: "LokaKerja", icon: Icons.notifications,),
         const SizedBox(
@@ -163,7 +163,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                 crossAxisCount: 2,
                 crossAxisSpacing: 10,
                 mainAxisSpacing: 10,
-                mainAxisExtent: 170),
+                mainAxisExtent: 175),
             itemBuilder: (context, index) {
               return JobContainer(
                 jobTitle: _jobList[index][0],
