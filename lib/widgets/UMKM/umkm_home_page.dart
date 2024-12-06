@@ -2,6 +2,8 @@ import 'package:dpbo_kelompok/widgets/job_container.dart';
 import 'package:dpbo_kelompok/widgets/umkm_bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'umkm_profile_page.dart';
+import 'umkm_kontrak_page.dart';
+import 'umkm_pekerja_page.dart';
 
 class UMKMHomePage extends StatefulWidget {
   const UMKMHomePage({
@@ -221,6 +223,10 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
           ? body() 
           : _currentIndex == 3
           ? ProfilePage()
+          : _currentIndex == 2
+          ? PekerjaPage()
+          : _currentIndex == 1
+          ? KontrakPage()
           : body(), 
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
