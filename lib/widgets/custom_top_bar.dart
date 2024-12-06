@@ -17,7 +17,7 @@ class CustomTopBar extends StatelessWidget {
           Color.fromARGB(255, 150, 213, 234)
         ], begin: Alignment.bottomLeft, end: Alignment.topRight),
         borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5)),
+            bottomLeft: Radius.circular(8), bottomRight: Radius.circular(8)),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.2),
