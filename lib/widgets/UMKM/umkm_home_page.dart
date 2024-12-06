@@ -1,5 +1,5 @@
-import 'package:dpbo_kelompok/widgets/job_container.dart';
-import 'package:dpbo_kelompok/widgets/umkm_bottom_nav.dart';
+import 'package:lokakerja/widgets/job_container.dart';
+import 'package:lokakerja/widgets/umkm_bottom_nav.dart';
 import 'package:flutter/material.dart';
 import 'umkm_profile_page.dart';
 
