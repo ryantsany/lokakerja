@@ -135,7 +135,7 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                     mainAxisExtent: 175,
                   ),
                   itemBuilder: (context, index) {
-                    return JobContainer(jobTitle: _jobList[index][0], jobTime: _jobList[index][1], jobDistance: _jobList[index][2],);
+                    return JobContainer(jobTitle: _jobList[index][0], jobTime: _jobList[index][1], jobDistance: _jobList[index][2], imgPath: "assets/keripikkoki.jpeg",);
                   },
                 ),
               ],
