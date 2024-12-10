@@ -4,12 +4,14 @@ class JobContainer extends StatelessWidget {
   String jobTitle;
   String jobTime;
   String jobDistance;
+  String imgPath;
 
   JobContainer(
       {super.key,
       required this.jobTitle,
       required this.jobTime,
-      required this.jobDistance});
+      required this.jobDistance, 
+      required this.imgPath});
 
   @override
   Widget build(BuildContext context) {
