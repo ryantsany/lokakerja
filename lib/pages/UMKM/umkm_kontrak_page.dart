@@ -11,7 +11,7 @@ class KontrakPage extends StatelessWidget {
       body: Column(
         children: [
           
-          CustomTopBar(title: "Kontrak", icon: Icons.person),
+          CustomTopBar(title: "Kontrak", icon: Icons.work),
 
           
           Row(

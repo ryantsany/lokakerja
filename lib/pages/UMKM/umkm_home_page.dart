@@ -170,7 +170,7 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Search Bar
+                    
                     Expanded(
                       child: SizedBox(
                         height: 40,

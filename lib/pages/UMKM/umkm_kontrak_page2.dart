@@ -18,7 +18,7 @@ class KontrakPage2 extends StatelessWidget {
       body: Column(
         children: [
           
-          CustomTopBar(title: "Kontrak", icon: Icons.person),
+          CustomTopBar(title: "Kontrak", icon: Icons.work),
 
           
           Row(
@@ -30,7 +30,7 @@ class KontrakPage2 extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => KontrakPage()), // Ganti dengan halaman lain jika diperlukan
+                    MaterialPageRoute(builder: (context) => KontrakPage()), 
                   );
                 },
               ),
