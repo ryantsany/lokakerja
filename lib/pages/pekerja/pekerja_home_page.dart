@@ -1,11 +1,10 @@
 import "package:flutter/material.dart";
+import "package:lokakerja/widgets/bottom_nav.dart";
 import "package:lokakerja/widgets/custom_top_bar.dart";
-import "package:lokakerja/widgets/pekerja/pekerja_profile_page.dart";
-import "../job_container.dart";
-import "../pekerja_bottom_nav.dart";
-import 'pekerja_pekerjaan_page.dart';
-import 'pekerja_profile_page.dart';
-import 'pekerja_simpan_page.dart';
+import "package:lokakerja/pages/pekerja/pekerja_profile_page.dart";
+import "package:lokakerja/widgets/job_container.dart";
+// import "../job_container.dart";
+// import "../pekerja_bottom_nav.dart";
 
 
 class PekerjaHomePage extends StatefulWidget {
@@ -130,7 +129,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Rizky Cookies",
+                    Text("Rizky Cookie",
                         style: TextStyle(fontWeight: FontWeight.w700)),
                     Text("06.00 - 15.00",
                         style: TextStyle(fontWeight: FontWeight.w600)),

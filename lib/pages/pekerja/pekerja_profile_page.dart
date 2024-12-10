@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lokakerja/widgets/input_text_field.dart';
-import 'package:flutter/material.dart';
 import 'package:lokakerja/widgets/custom_top_bar.dart';
-import 'package:lokakerja/widgets/input_text_field.dart';
 
 class ProfilePage extends StatelessWidget {
   final TextEditingController _namaUsahaController = TextEditingController();
@@ -88,10 +86,11 @@ class ProfilePage extends StatelessWidget {
                   ),
                   SizedBox(height: 24),
 
+                  // DatePickerDialog(firstDate: DateTime(2003, 2, 13), lastDate: DateTime.now()),
                   
                   InputTextField(
-                    icon: Icons.business,
-                    placeholder: "Nama Usaha",
+                    icon: Icons.person_rounded,
+                    placeholder: "Nama Lengkap",
                     controller: _namaUsahaController,
                   ),
                   SizedBox(height: 16),
@@ -99,7 +98,7 @@ class ProfilePage extends StatelessWidget {
                   
                   InputTextField(
                     icon: Icons.category_rounded,
-                    placeholder: "Kategori",
+                    placeholder: "Tanggal Lahir",
                     controller: _kategoriController,
                   ),
                   SizedBox(height: 16),

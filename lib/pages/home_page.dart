@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
-import "../widgets/pekerja/pekerja_home_page.dart";
-import "../widgets/UMKM/umkm_home_page.dart";
+import "package:lokakerja/pages/UMKM/umkm_home_page.dart";
+import "package:lokakerja/pages/pekerja/pekerja_home_page.dart";
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key, required this.username, required this.password});
