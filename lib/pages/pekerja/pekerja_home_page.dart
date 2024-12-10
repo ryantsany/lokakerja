@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "package:lokakerja/pages/pekerja/pekerja_activity_page.dart";
 import "package:lokakerja/pages/pekerja/pekerja_pekerjaan_page.dart";
 import "package:lokakerja/widgets/bottom_nav.dart";
 import "package:lokakerja/widgets/currentjob.dart";
@@ -135,6 +136,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                 jobTitle: _jobList[index][0],
                 jobTime: _jobList[index][1],
                 jobDistance: _jobList[index][2],
+                imgPath: "assets/keripikkoki.jpeg",
               );
             },
           ),
@@ -154,7 +156,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
           : _currentIndex == 3
               ? ProfilePage()
               : _currentIndex == 2
-                  ? Center(child: Text("Halaman simpanan"))
+                  ? ActivityPage()
                   : _currentIndex == 1
                       ? PekerjaanPage()
                       : body(),

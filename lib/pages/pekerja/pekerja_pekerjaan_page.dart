@@ -10,14 +10,11 @@ class PekerjaanPage extends StatelessWidget {
       body: Column(
         children: [
           CustomTopBar(title: "Pekerjaan", icon: Icons.person),
-          SizedBox(
-            height: 5,
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TabButton(text: "Pekerjaan", isActive: true, onTap: (){}),
-              TabButton(text: "Kerjaan", isActive: false, onTap: (){}),
+              TabButton(text: "Kerjaanku", isActive: true, onTap: (){}),
+              TabButton(text: "Cari Kerja", isActive: false, onTap: (){}),
             ],
           ),
           SizedBox(
