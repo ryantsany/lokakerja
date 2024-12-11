@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lokakerja/widgets/input_text_field.dart';
 import 'package:lokakerja/widgets/custom_top_bar.dart';
-<<<<<<< HEAD:lib/widgets/pekerja/pekerja_profile_page.dart
 
-=======
->>>>>>> 91b9a30bc543bcd8a51a21064ab9a9a4d99ccc07:lib/pages/pekerja/pekerja_profile_page.dart
 
 class ProfilePage extends StatelessWidget {
   final TextEditingController _namaUsahaController = TextEditingController();

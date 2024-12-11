@@ -3,6 +3,7 @@ import 'package:lokakerja/widgets/custom_top_bar.dart';
 import 'package:lokakerja/widgets/tab_button.dart';
 import 'package:lokakerja/widgets/job_container.dart';
 import 'umkm_kontrak_page.dart';
+import 'package:lokakerja/widgets/umkm_bottom_nav.dart';
 
 class KontrakPage2 extends StatelessWidget {
   final List<List<String>> _jobList = [
@@ -73,4 +74,6 @@ class KontrakPage2 extends StatelessWidget {
       ),
     );
   }
+  
+  
 }

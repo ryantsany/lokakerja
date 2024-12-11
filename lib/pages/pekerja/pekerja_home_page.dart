@@ -4,17 +4,13 @@ import "package:lokakerja/pages/pekerja/pekerja_pekerjaan_page.dart";
 import "package:lokakerja/widgets/bottom_nav.dart";
 import "package:lokakerja/widgets/currentjob.dart";
 import "package:lokakerja/widgets/custom_top_bar.dart";
-<<<<<<< HEAD:lib/widgets/pekerja/pekerja_home_page.dart
-import "package:lokakerja/widgets/pekerja/pekerja_profile_page.dart";
-import "../job_container.dart";
-import "../pekerja_bottom_nav.dart";
-=======
 import "package:lokakerja/pages/pekerja/pekerja_profile_page.dart";
+import 'package:flutter/widgets.dart';
 import "package:lokakerja/widgets/job_container.dart";
 // import "../job_container.dart";
 // import "../pekerja_bottom_nav.dart";
 
->>>>>>> 91b9a30bc543bcd8a51a21064ab9a9a4d99ccc07:lib/pages/pekerja/pekerja_home_page.dart
+
 
 class PekerjaHomePage extends StatefulWidget {
   const PekerjaHomePage({super.key, required this.username, required this.password});
