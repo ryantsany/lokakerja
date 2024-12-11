@@ -22,11 +22,11 @@ class CustomBottomNavigationBar extends StatelessWidget {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.work),
-          label: "Kontrak",
+          label: "Pekerjaan",
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.group_rounded),
-          label: "Pekerja",
+          icon: Icon(Icons.bookmark_rounded),
+          label: "Aktifitas",
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person_2_rounded),

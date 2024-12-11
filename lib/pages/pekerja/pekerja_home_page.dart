@@ -1,8 +1,20 @@
 import "package:flutter/material.dart";
+import "package:lokakerja/pages/pekerja/pekerja_activity_page.dart";
+import "package:lokakerja/pages/pekerja/pekerja_pekerjaan_page.dart";
+import "package:lokakerja/widgets/bottom_nav.dart";
+import "package:lokakerja/widgets/currentjob.dart";
 import "package:lokakerja/widgets/custom_top_bar.dart";
+<<<<<<< HEAD:lib/widgets/pekerja/pekerja_home_page.dart
 import "package:lokakerja/widgets/pekerja/pekerja_profile_page.dart";
 import "../job_container.dart";
 import "../pekerja_bottom_nav.dart";
+=======
+import "package:lokakerja/pages/pekerja/pekerja_profile_page.dart";
+import "package:lokakerja/widgets/job_container.dart";
+// import "../job_container.dart";
+// import "../pekerja_bottom_nav.dart";
+
+>>>>>>> 91b9a30bc543bcd8a51a21064ab9a9a4d99ccc07:lib/pages/pekerja/pekerja_home_page.dart
 
 class PekerjaHomePage extends StatefulWidget {
   const PekerjaHomePage({super.key, required this.username, required this.password});
@@ -102,43 +114,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
           const SizedBox(
             height: 10,
           ),
-          Container(
-            height: 100,
-            decoration: BoxDecoration(
-              // color: Colors.blue,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: Colors.black.withOpacity(0.1)),
-            ),
-            child: Row(
-              children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                Icon(
-                  Icons.work,
-                  size: 50,
-                  color: Colors.black.withOpacity(0.7),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Rizky Cookies",
-                        style: TextStyle(fontWeight: FontWeight.w700)),
-                    Text("06.00 - 15.00",
-                        style: TextStyle(fontWeight: FontWeight.w600)),
-                    Text("Jl. Bali No. 25",
-                        style: TextStyle(fontWeight: FontWeight.w600)),
-                    Text("Bekerja hingga 20 November 2024",
-                        style: TextStyle(fontWeight: FontWeight.w600)),
-                  ],
-                )
-              ],
-            ),
-          ),
+          Currentjob(),
           const SizedBox(
             height: 20,
           ),
@@ -166,6 +142,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                 jobTitle: _jobList[index][0],
                 jobTime: _jobList[index][1],
                 jobDistance: _jobList[index][2],
+                imgPath: "assets/keripikkoki.jpeg",
               );
             },
           ),
@@ -185,9 +162,9 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
           : _currentIndex == 3
               ? ProfilePage()
               : _currentIndex == 2
-                  ? Center(child: Text("Halaman simpanan"))
+                  ? ActivityPage()
                   : _currentIndex == 1
-                      ? Center(child: Text("Halaman pekerjaan"))
+                      ? PekerjaanPage()
                       : body(),
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
