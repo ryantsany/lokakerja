@@ -3,10 +3,6 @@ import "package:lokakerja/widgets/custom_top_bar.dart";
 import "package:lokakerja/widgets/pekerja/pekerja_profile_page.dart";
 import "../job_container.dart";
 import "../pekerja_bottom_nav.dart";
-import 'pekerja_pekerjaan_page.dart';
-import 'pekerja_profile_page.dart';
-import 'pekerja_simpan_page.dart';
-
 
 class PekerjaHomePage extends StatefulWidget {
   const PekerjaHomePage({super.key, required this.username, required this.password});
