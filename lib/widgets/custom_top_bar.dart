@@ -10,7 +10,7 @@ class CustomTopBar extends StatelessWidget {
     return Container(
       height: 70,
       width: MediaQuery.of(context).size.width,
-      padding: const EdgeInsets.only(left: 20, right: 20, top: 29),
+      padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
       decoration:  BoxDecoration(
         gradient: LinearGradient(colors: [
           Color.fromARGB(255, 28, 125, 204),
@@ -64,7 +64,7 @@ class CustomTopBar extends StatelessWidget {
           //       letterSpacing: 2.0),
           // )),
         ],
-      ),
-    );
-  }
+     ),
+  );
+ }
 }
