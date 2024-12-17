@@ -25,7 +25,7 @@ class _PekerjaPageState extends State<PekerjaPage> {
         children: [
           _buildTopSection(),
           _buildTabButtons(),
-          const SizedBox(height: 20),
+          const SizedBox(height: 1),
           Expanded(
             child: _currentIndex == 0 ? _buildBukaLowongan() : _buildLowonganAktif(),
           ),
@@ -71,7 +71,7 @@ class _PekerjaPageState extends State<PekerjaPage> {
       padding: const EdgeInsets.all(16.0),
       children: [
         _buildJobStats(),  
-        const SizedBox(height: 20),
+        const SizedBox(height: 1),
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
@@ -97,12 +97,32 @@ class _PekerjaPageState extends State<PekerjaPage> {
 
   
   Widget _buildLowonganAktif() {
-    return const Center(
-      child: Text(
-        "Belum ada lowongan aktif",
-        style: TextStyle(fontSize: 20, color: Colors.grey),
-      ),
+    return ListView(
+      padding: const EdgeInsets.all(16.0),
+      children: [
+        const SizedBox(height: 5),
+        GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 10,
+            mainAxisSpacing: 10,
+            mainAxisExtent: 175,
+          ),
+          itemCount: _jobList.length,
+          itemBuilder: (context, index) {
+            return JobContainer(
+              jobTitle: _jobList[index][0],
+              jobTime: _jobList[index][1],
+              jobDistance: _jobList[index][2],
+              imgPath: "assets/keripikkoki.jpeg",
+            );
+          },
+        ),
+      ],
     );
+    
   }
 
   
