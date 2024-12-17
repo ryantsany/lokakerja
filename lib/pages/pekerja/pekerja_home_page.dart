@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:lokakerja/pages/pekerja/pekerja_activity_page.dart";
+import "package:lokakerja/pages/pekerja/pekerja_activity_page_coba.dart";
 import "package:lokakerja/pages/pekerja/pekerja_pekerjaan_page.dart";
 import "package:lokakerja/widgets/bottom_nav.dart";
 import "package:lokakerja/widgets/currentjob.dart";
@@ -158,7 +159,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
           : _currentIndex == 3
               ? ProfilePage()
               : _currentIndex == 2
-                  ? ActivityPage()
+                  ? ActivityPageCoba()
                   : _currentIndex == 1
                       ? PekerjaanPage()
                       : body(),
@@ -173,4 +174,3 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
     );
   }
 }
-

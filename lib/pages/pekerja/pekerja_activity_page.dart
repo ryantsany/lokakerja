@@ -10,6 +10,7 @@ class ActivityPage extends StatelessWidget {
       body: Column(
         children: [
           CustomTopBar(title: "Pekerjaan", icon: Icons.person),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
