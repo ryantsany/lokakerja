@@ -10,39 +10,39 @@ class ActivityPageCoba extends StatelessWidget {
         initialIndex: 1,
         length: 2,
         child: Scaffold(
-          appBar: AppBar(
-            automaticallyImplyLeading: false,
-            leading: const CustomTopBar(title: "Pekerjaan", icon: Icons.person),
-            leadingWidth: MediaQuery.sizeOf(context).width,
-            bottom: const TabBar(
-              indicatorColor: Color.fromARGB(255, 28, 125, 204),
-              labelColor: Color.fromARGB(255, 28, 125, 204),
-              unselectedLabelColor: Colors.black,
-              indicatorSize: TabBarIndicatorSize.tab,
-              tabs: [
-                Tab(
-                  child: Text("Simpan"),
-                ),
-                Tab(
-                  child: Text("Lamaran"),
-                ),
-              ],
-            ),
-          ),
-
-          body: TabBarView(
+          body: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                child: Column(
+              CustomTopBar(title: "Pekerjaan", icon: Icons.person),
+              const TabBar(
+                indicatorColor: Color.fromARGB(255, 28, 125, 204),
+                labelColor: Color.fromARGB(255, 28, 125, 204),
+                unselectedLabelColor: Colors.black,
+                indicatorSize: TabBarIndicatorSize.tab,
+                tabs: [
+                  Tab(
+                    child: Text("Simpan"),
+                  ),
+                  Tab(
+                    child: Text("Lamaran"),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: TabBarView(
                   children: [
-                    Currentjob(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      child: Column(
+                        children: [
+                          Currentjob(),
+                        ],
+                      ),
+                    ),
+                    const Center(
+                      child: Text("Lamaran"),
+                    ),
                   ],
                 ),
-              ),
-
-              const Center(
-                child: Text("Lamaran"),
               ),
             ],
           ),
