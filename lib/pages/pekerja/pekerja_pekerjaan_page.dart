@@ -5,28 +5,48 @@ import 'package:lokakerja/widgets/tab_button.dart';
 
 class PekerjaanPage extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          CustomTopBar(title: "Pekerjaan", icon: Icons.person),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+   Widget build(BuildContext context) {
+    return DefaultTabController(
+        initialIndex: 1,
+        length: 2,
+        child: Scaffold(
+          body: Column(
             children: [
-              TabButton(text: "Kerjaanku", isActive: true, onTap: (){}),
-              TabButton(text: "Cari Kerja", isActive: false, onTap: (){}),
+              CustomTopBar(title: "Pekerjaan", icon: Icons.person),
+              const TabBar(
+                indicatorColor: Color.fromARGB(255, 28, 125, 204),
+                labelColor: Color.fromARGB(255, 28, 125, 204),
+                unselectedLabelColor: Colors.black,
+                indicatorSize: TabBarIndicatorSize.tab,
+                tabs: [
+                  Tab(
+                    child: Text("Kerjaanku"),
+                  ),
+                  Tab(
+                    child: Text("Cari Kerja"),
+                  ),
+                ],
+              ),
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+                      child: Column(
+                        children: [
+                          Currentjob(),
+                        ],
+                      ),
+                    ),
+                    const Center(
+                      child: Text("Cari kerja di sini"),
+                    ),
+                  ],
+                ),
+              ),
             ],
           ),
-          SizedBox(
-            height: 5,
-          ),
-          Padding(
-            child: Currentjob(),
-            padding: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-          ),
-          
-        ],
-      ),
+        ),
     );
   }
 }

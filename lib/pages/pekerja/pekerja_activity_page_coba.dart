@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lokakerja/widgets/currentjob.dart';
 import 'package:lokakerja/widgets/custom_top_bar.dart';
-import 'package:lokakerja/widgets/tab_button.dart';
 
 class ActivityPageCoba extends StatelessWidget {
   @override
