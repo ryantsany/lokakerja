@@ -4,13 +4,16 @@ class JobContainer extends StatelessWidget {
   String jobTitle;
   String jobTime;
   String jobDistance;
+  String money;
   String imgPath;
 
   JobContainer(
       {super.key,
       required this.jobTitle,
       required this.jobTime,
-      required this.jobDistance, 
+      required this.jobDistance,
+      required this.money,
+
       required this.imgPath});
 
   @override
@@ -29,7 +32,7 @@ class JobContainer extends StatelessWidget {
           children: [
             Container(
               // width: 100,
-              height: 80,
+              height: 60,
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(5)),
                 image: DecorationImage(
@@ -75,6 +78,19 @@ class JobContainer extends StatelessWidget {
                       ),
                     ],
                   ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.money, size: 16),
+                      const SizedBox(
+                        width: 5,
+                      ),
+                      Text(
+                        jobDistance,
+                        style: const TextStyle(fontSize: 16),
+                      ),
+                    ],
+                  )
                 ],
               ),
             ),

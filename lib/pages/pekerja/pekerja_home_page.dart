@@ -26,10 +26,10 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
   int _currentIndex = 0;
 
   final List<List<String>> _jobList = [
-    ["Fotografer", "07.00 - 16.00", "3km"],
-    ["Desain Logo", "08.00 - 17.00", "4km"],
-    ["Membuat Web", "09.00 - 18.00", "5km"],
-    ["Videografer", "10.00 - 19.00", "6km"],
+    ["Fotografer", "07.00 - 16.00","Rp 3.000.000,00", "3km"],
+    ["Desain Logo", "08.00 - 17.00","Rp 3.000.000,00", "4km"],
+    ["Membuat Web", "09.00 - 18.00","Rp 3.000.000,00", "5km"],
+    ["Videografer", "10.00 - 19.00","Rp 3.000.000,00", "6km"],
   ];
 
   Widget body() {
@@ -139,6 +139,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                 jobTitle: _jobList[index][0],
                 jobTime: _jobList[index][1],
                 jobDistance: _jobList[index][2],
+                money: _jobList[index][3],
                 imgPath: "assets/keripikkoki.jpeg",
               );
             },

@@ -4,13 +4,14 @@ import 'package:lokakerja/widgets/tab_button.dart';
 import 'package:lokakerja/widgets/job_container.dart';
 import 'umkm_kontrak_page.dart';
 import 'package:lokakerja/widgets/umkm_bottom_nav.dart';
+import 'package:lokakerja/widgets/add_button.dart';
 
-class KontrakPage2 extends StatelessWidget {
+class KontrakPage extends StatelessWidget {
   final List<List<String>> _jobList = [
-    ["Fotografer", "07.00 - 16.00", "3km"],
-    ["Desain Logo", "08.00 - 17.00", "4km"],
-    ["Membuat Web", "09.00 - 18.00", "5km"],
-    ["Videografer", "10.00 - 19.00", "6km"],
+    ["Fotografer", "07.00 - 16.00","Rp 3.000.000,00", "3km"],
+    ["Desain Logo", "08.00 - 17.00","Rp 3.000.000,00", "4km"],
+    ["Membuat Web", "09.00 - 18.00","Rp 3.000.000,00", "5km"],
+    ["Videografer", "10.00 - 19.00","Rp 3.000.000,00", "6km"],
   ];
 
   @override
@@ -18,36 +19,8 @@ class KontrakPage2 extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          
           CustomTopBar(title: "Kontrak", icon: Icons.work),
-
-          
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TabButton(
-                text: "Buka Lowongan",
-                isActive: true,
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => KontrakPage()), 
-                  );
-                },
-              ),
-              TabButton(
-                text: "Lowongan Aktif",
-                isActive: false,
-                onTap: () {
-                  
-                },
-              ),
-            ],
-          ),
-
           const SizedBox(height: 10),
-
-          
           Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -56,7 +29,7 @@ class KontrakPage2 extends StatelessWidget {
                   crossAxisCount: 2, 
                   crossAxisSpacing: 10,
                   mainAxisSpacing: 10,
-                  mainAxisExtent: 200, 
+                  mainAxisExtent: 175, 
                 ),
                 itemCount: _jobList.length,
                 itemBuilder: (context, index) {
@@ -64,6 +37,7 @@ class KontrakPage2 extends StatelessWidget {
                     jobTitle: _jobList[index][0],
                     jobTime: _jobList[index][1],
                     jobDistance: _jobList[index][2],
+                    money : _jobList[index][3],
                     imgPath: "assets/keripikkoki.jpeg", 
                   );
                 },
@@ -72,8 +46,8 @@ class KontrakPage2 extends StatelessWidget {
           ),
         ],
       ),
+      floatingActionButton: AddButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
-  
-  
 }

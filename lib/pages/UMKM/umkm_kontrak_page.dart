@@ -4,7 +4,7 @@ import 'package:lokakerja/widgets/custom_top_bar.dart';
 import 'package:lokakerja/widgets/tab_button.dart';
 import 'package:flutter/widgets.dart';
 
-class KontrakPage extends StatelessWidget {
+class KontrakPage2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,7 @@ class KontrakPage extends StatelessWidget {
                 text: "Lowongan aktif",
                 isActive: false,
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => KontrakPage2()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => KontrakPage()));
                 },
               ),
             ],
