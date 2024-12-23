@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lokakerja/widgets/custom_top_bar.dart';
 import 'package:lokakerja/widgets/pekerja_container.dart';
 import 'package:lokakerja/widgets/add_button.dart';
+import 'package:lokakerja/widgets/add_form_Pekerja.dart';
+
 class PekerjaPage extends StatefulWidget {
   @override
   _PekerjaPageState createState() => _PekerjaPageState();
@@ -9,11 +11,18 @@ class PekerjaPage extends StatefulWidget {
 
 class _PekerjaPageState extends State<PekerjaPage> {
   final List<List<String>> _jobList = [
-    ["John Doe", "Fotografer", "07.00 - 16.00", "Rp 3.000.000,00"],
-    ["Jane Smith", "Desain Logo", "08.00 - 17.00", "Rp 3.000.000,00"],
-    ["Alice Johnson", "Membuat Web", "09.00 - 18.00", "Rp 3.000.000,00"],
-    ["Bob Brown", "Videografer", "10.00 - 19.00", "Rp 3.000.000,00"],
+    ["John Doe", "Fotografer", "07.00 - 16.00", "Rp 3.000.000,00", "1 Bulan"],
+    ["Jane Smith", "Desain Logo", "08.00 - 17.00", "Rp 3.000.000,00", "1 Bulan"],
+    ["Alice Johnson", "Membuat Web", "09.00 - 18.00", "Rp 3.000.000,00", "1 Bulan"],
+    ["Bob Brown", "Videografer", "10.00 - 19.00", "Rp 3.000.000,00", "1 Bulan"],
   ];
+
+  void _showAddForm(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AddFormPekerja()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +43,7 @@ class _PekerjaPageState extends State<PekerjaPage> {
                     jobTitle: _jobList[index][1],
                     jobTime: _jobList[index][2],
                     money: _jobList[index][3],
+                    duration: _jobList[index][4],
                   ),
                 );
               },
@@ -41,9 +51,8 @@ class _PekerjaPageState extends State<PekerjaPage> {
           ),
         ],
       ),
-      floatingActionButton: AddButton(),
+      floatingActionButton: AddButton(onPressed: () => _showAddForm(context)),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
 }
-

@@ -5,6 +5,7 @@ class PekerjaContainer extends StatelessWidget {
   final String jobTitle;
   final String jobTime;
   final String money;
+  final String duration;
 
   PekerjaContainer({
     super.key,
@@ -12,12 +13,13 @@ class PekerjaContainer extends StatelessWidget {
     required this.jobTitle,
     required this.jobTime,
     required this.money,
+    required this.duration,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100,
+      height: 120,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         border: Border.all(color: Colors.black.withOpacity(0.1)),
@@ -76,6 +78,17 @@ class PekerjaContainer extends StatelessWidget {
                     const SizedBox(width: 5),
                     Text(
                       money,
+                      style: const TextStyle(fontSize: 16),
+                    ),
+                  ],
+                ),
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.timer, size: 16),
+                    const SizedBox(width: 5),
+                    Text(
+                      duration,
                       style: const TextStyle(fontSize: 16),
                     ),
                   ],

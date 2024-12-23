@@ -5,14 +5,22 @@ import 'package:lokakerja/widgets/job_container.dart';
 import 'umkm_kontrak_page.dart';
 import 'package:lokakerja/widgets/umkm_bottom_nav.dart';
 import 'package:lokakerja/widgets/add_button.dart';
+import 'package:lokakerja/widgets/add_form_kontrak.dart';
 
 class KontrakPage extends StatelessWidget {
   final List<List<String>> _jobList = [
-    ["Fotografer", "07.00 - 16.00","Rp 3.000.000,00", "3km"],
-    ["Desain Logo", "08.00 - 17.00","Rp 3.000.000,00", "4km"],
-    ["Membuat Web", "09.00 - 18.00","Rp 3.000.000,00", "5km"],
-    ["Videografer", "10.00 - 19.00","Rp 3.000.000,00", "6km"],
+    ["Fotografer", "07.00 - 16.00","1 Bulan","Rp 3.000.000,00"],
+    ["Desain Logo", "08.00 - 17.00","1 Bulan","Rp 3.000.000,00"],
+    ["Membuat Web", "09.00 - 18.00","1 Bulan","Rp 3.000.000,00"],
+    ["Videografer", "10.00 - 19.00","1 Bulan","Rp 3.000.000,00"],
   ];
+
+  void _showAddForm(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => AddForm()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +54,7 @@ class KontrakPage extends StatelessWidget {
           ),
         ],
       ),
-      floatingActionButton: AddButton(),
+      floatingActionButton: AddButton(onPressed: () => _showAddForm(context)),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
   }
