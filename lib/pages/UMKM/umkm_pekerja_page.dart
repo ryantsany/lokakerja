@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lokakerja/model/db_helper.dart';
+import 'package:lokakerja/model/worker.dart';
 import 'package:lokakerja/widgets/custom_top_bar.dart';
 import 'package:lokakerja/widgets/pekerja_container.dart';
 import 'package:lokakerja/widgets/add_button.dart';
@@ -17,6 +19,23 @@ class _PekerjaPageState extends State<PekerjaPage> {
     ["Bob Brown", "Videografer", "10.00 - 19.00", "Rp 3.000.000,00", "1 Bulan"],
   ];
 
+  final _formKey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
+  final _jobController = TextEditingController();
+  final _workHourController = TextEditingController();
+  final _salaryController = TextEditingController();
+  final _durationController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _jobController.dispose();
+    _workHourController.dispose();
+    _salaryController.dispose();
+    _durationController.dispose();
+    super.dispose();
+  }
+
   void _showAddForm(BuildContext context) {
     // Navigator.push(
     //   context,
@@ -26,35 +45,43 @@ class _PekerjaPageState extends State<PekerjaPage> {
         context: context,
         builder: (context) => AlertDialog(
           title: Text('Add Data'),
-          content: Column(
+          content: Form(
+            key: _formKey,
+            child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               TextField(
+                controller: _nameController,
                 decoration: InputDecoration(
                   labelText: 'Nama pekerja',
                 ),
               ),
               TextField(
+                controller: _jobController,
                 decoration: InputDecoration(
                   labelText: 'jenis kerja',
                 ),
               ),
               TextField(
+                controller: _workHourController,
                 decoration: InputDecoration(
                   labelText: 'durasi kerja',
                 ),
               ),
               TextField(
+                controller: _salaryController,
                 decoration: InputDecoration(
                   labelText: 'Gaji',
                 ),
               ),
               TextField(
+                controller: _durationController,
                 decoration: InputDecoration(
                   labelText: 'durasi kontrak',
                 ),
               ),
             ],
+          ),
           ),
           actions: <Widget>[
             ElevatedButton(
@@ -64,8 +91,17 @@ class _PekerjaPageState extends State<PekerjaPage> {
               child: Text('Cancel'),
             ),
             ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
+              onPressed: () async {
+                if(_formKey.currentState!.validate()) {
+                  try {
+                    Worker worker = Worker(_nameController.text,_jobController.text, _workHourController.text, _salaryController.text, _durationController.text,);
+                    await DatabaseHelper().insertWorker(worker);
+                    Navigator.of(context).pop();
+                  } catch (e) {
+                    print(e);
+                  }
+                }
+                
               },
               child: Text('Save'),
             ),

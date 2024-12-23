@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:lokakerja/model/user.dart';
+import 'package:lokakerja/widgets/login_widget.dart';
 import 'custom_button.dart';
 import 'input_text_field.dart';
-import '../model/user_provider.dart';
+import '../model/db_helper.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -126,7 +127,7 @@ class _SignupState extends State<Signup> {
                           'role': _selectedValue,
                         };
                         User user = User(_usernameController.text, _emailController.text, _passwordController.text, _selectedValue);
-                        await UserProvider().insertUser(user);
+                        await DatabaseHelper().insertUser(user);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('User registered successfully')),
                         );
