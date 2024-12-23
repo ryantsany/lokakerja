@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lokakerja/pages/pekerja/pekerja_home_page.dart';
 import 'input_text_field.dart';
-import '../model/database_helper.dart';
+import '../model/user_provider.dart';
 import '../pages/UMKM/umkm_home_page.dart';
 import './custom_button.dart';
 
@@ -73,7 +73,7 @@ class _LoginState extends State<Login> {
               child: CustomButton(
                 text: "Masuk",
                 onPressed: () async {
-                  Map<String, dynamic>? user = await DatabaseHelper().getUser(
+                  Map<String, dynamic>? user = await UserProvider().getUser(
                     _usernameController.text,
                     _passwordController.text,
                   );

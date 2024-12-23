@@ -1,23 +1,24 @@
 import 'package:lokakerja/config.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:lokakerja/model/user.dart';
 // import 'package:path/path.dart';
 
-class DatabaseHelper {
-  static final DatabaseHelper _instance = DatabaseHelper._internal();
-  factory DatabaseHelper() => _instance;
+class UserProvider {
+  static final UserProvider _instance = UserProvider._internal();
+  factory UserProvider() => _instance;
   static Database? _database;
 
-  DatabaseHelper._internal();
+  UserProvider._internal();
 
   final String databaseName = DB_SCHEME;
 
   String userTable = '''
-  CREATE TABLE user(
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    username TEXT,
-    email TEXT,
-    password TEXT,
-    role TEXT
+  CREATE TABLE ${User.TABLE_USER}(
+    ${User.COLUMN_ID} INTEGER PRIMARY KEY AUTOINCREMENT,
+    ${User.COLUMN_USERNAME} TEXT,
+    ${User.COLUMN_EMAIL} TEXT,
+    ${User.COLUMN_PASSWORD} TEXT,
+    ${User.COLUMN_ROLE} TEXT
   )
   ''';
 
@@ -44,14 +45,17 @@ class DatabaseHelper {
       version: 1,
       onCreate: (db, version) async {
         await db.execute(userTable);
-        await db.execute(kontrakTable);
       },
     );
   }
 
-  Future<int> insertUser(Map<String, dynamic> user) async {
+  // Future<int> insertUser(Map<String, dynamic> user) async {
+  //   Database db = await database;
+  //   return await db.insert('user', user);
+  // }
+  Future<int> insertUser(User user) async {
     Database db = await database;
-    return await db.insert('user', user);
+    return await db.insert('user', user.toMap());
   }
 
   Future<Map<String, dynamic>?> getUser(String username, String password) async {

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lokakerja/model/user.dart';
 import 'custom_button.dart';
 import 'input_text_field.dart';
-import '../model/database_helper.dart';
+import '../model/user_provider.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});
@@ -118,13 +119,14 @@ class _SignupState extends State<Signup> {
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
                       try {
-                        Map<String, dynamic> user = {
+                        Map<String, dynamic> userMap = {
                           'username': _usernameController.text,
                           'email': _emailController.text,
                           'password': _passwordController.text,
                           'role': _selectedValue,
                         };
-                        await DatabaseHelper().insertUser(user);
+                        User user = User(_usernameController.text, _emailController.text, _passwordController.text, _selectedValue);
+                        await UserProvider().insertUser(user);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(content: Text('User registered successfully')),
                         );
