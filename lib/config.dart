@@ -1,0 +1,1 @@
+const String DB_SCHEME = 'lokakerja.db';

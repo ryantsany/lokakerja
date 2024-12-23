@@ -1,5 +1,6 @@
+import 'package:lokakerja/config.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:path/path.dart';
+// import 'package:path/path.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._internal();
@@ -8,7 +9,7 @@ class DatabaseHelper {
 
   DatabaseHelper._internal();
 
-  final String databaseName = "lokakerja.db";
+  final String databaseName = DB_SCHEME;
 
   String userTable = '''
   CREATE TABLE user(
@@ -20,6 +21,16 @@ class DatabaseHelper {
   )
   ''';
 
+  String kontrakTable = '''
+  CREATE TABLE kontrak(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    jobname TEXT,
+    duration TEXT,
+    contract_duration TEXT,
+    salary TEXT
+  )
+  ''';
+
   Future<Database> get database async {
     if (_database != null) return _database!;
     _database = await _initDatabase();
@@ -27,12 +38,13 @@ class DatabaseHelper {
   }
 
   Future<Database> _initDatabase() async {
-    String path = join(await getDatabasesPath(), databaseName);
+    // String path = join(await getDatabasesPath(), databaseName);
     return await openDatabase(
-      path,
+      "lokakerja.db",
       version: 1,
       onCreate: (db, version) async {
         await db.execute(userTable);
+        await db.execute(kontrakTable);
       },
     );
   }

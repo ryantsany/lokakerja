@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'custom_button.dart';
 import 'input_text_field.dart';
-import '../sqlite/database_helper.dart';
+import '../model/database_helper.dart';
 
 class Signup extends StatefulWidget {
   const Signup({super.key});

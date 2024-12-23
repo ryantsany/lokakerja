@@ -18,10 +18,60 @@ class _PekerjaPageState extends State<PekerjaPage> {
   ];
 
   void _showAddForm(BuildContext context) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => AddFormPekerja()),
-    );
+    // Navigator.push(
+    //   context,
+    //   MaterialPageRoute(builder: (context) => AddFormPekerja()),
+    // );
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Add Data'),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Nama pekerja',
+                ),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'jenis kerja',
+                ),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'durasi kerja',
+                ),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'Gaji',
+                ),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: 'durasi kontrak',
+                ),
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancel'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Save'),
+            ),
+          ],
+        ),
+      );
   }
 
   @override
