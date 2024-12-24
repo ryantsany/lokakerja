@@ -83,6 +83,7 @@ class _LoginState extends State<Login> {
                         context,
                         MaterialPageRoute(
                           builder: (context) => UMKMHomePage(
+                            user_id: user['id'],
                             username: user['username'],
                             password: user['password'],
                           ),

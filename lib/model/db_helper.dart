@@ -26,11 +26,15 @@ class DatabaseHelper {
   String workerTable = '''
   CREATE TABLE ${Worker.TABLE_WORKER}(
     ${Worker.COLUMN_ID} INTEGER PRIMARY KEY AUTOINCREMENT,
+    ${Worker.COLUMN_USER_ID} INTEGER,
     ${Worker.COLUMN_NAME} TEXT,
     ${Worker.COLUMN_JOB} TEXT,
     ${Worker.COLUMN_WORK_HOUR} TEXT,
     ${Worker.COLUMN_CONTRACT_DURATION} TEXT,
-    ${Worker.COLUMN_SALARY} TEXT
+    ${Worker.COLUMN_SALARY} TEXT,
+    FOREIGN KEY (${Worker.COLUMN_USER_ID}) 
+    REFERENCES ${User.TABLE_USER} (${User.COLUMN_ID})
+    ON DELETE CASCADE
   )
   ''';
 
@@ -57,7 +61,11 @@ class DatabaseHelper {
       onCreate: (db, version) async {
         await db.execute(userTable);
         await db.execute(workerTable);
+        await db.execute('PRAGMA foreign_keys = ON');
         await db.execute(kontrakTable);
+      },
+      onConfigure: (db) async{
+        await db.execute('PRAGMA foreign_keys = ON');
       },
     );
   }
@@ -95,6 +103,16 @@ class DatabaseHelper {
   Future<List<Worker>> getWorkers() async {
     Database db = await database;
     List<Map<String, dynamic>> workers = await db.query('worker');
+    return workers.map((worker) => Worker.fromMap(worker)).toList();
+  }
+
+  Future<List<Worker>> getWorkersByUserId(int userId) async {
+    Database db = await database;
+    List<Map<String, dynamic>> workers = await db.query(
+      'worker',
+      where: 'user_id = ?',
+      whereArgs: [userId],
+    );
     return workers.map((worker) => Worker.fromMap(worker)).toList();
   }
 

@@ -7,17 +7,20 @@ import 'package:lokakerja/widgets/add_button.dart';
 import 'package:lokakerja/widgets/add_form_Pekerja.dart';
 
 class PekerjaPage extends StatefulWidget {
+  const PekerjaPage(
+    this.user_id,
+  );
+
+  final int user_id;
   @override
   _PekerjaPageState createState() => _PekerjaPageState();
 }
 
 class _PekerjaPageState extends State<PekerjaPage> {
-  final List<List<String>> _jobList = [
-    ["John Doe", "Fotografer", "07.00 - 16.00", "Rp 3.000.000,00", "1 Bulan"],
-    ["Jane Smith", "Desain Logo", "08.00 - 17.00", "Rp 3.000.000,00", "1 Bulan"],
-    ["Alice Johnson", "Membuat Web", "09.00 - 18.00", "Rp 3.000.000,00", "1 Bulan"],
-    ["Bob Brown", "Videografer", "10.00 - 19.00", "Rp 3.000.000,00", "1 Bulan"],
-  ];
+  DatabaseHelper db = DatabaseHelper();
+  List<Worker> workers = [];
+  
+  int workerCount = 0;
 
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
@@ -25,6 +28,12 @@ class _PekerjaPageState extends State<PekerjaPage> {
   final _workHourController = TextEditingController();
   final _salaryController = TextEditingController();
   final _durationController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    updateWorkerList();
+  }
 
   @override
   void dispose() {
@@ -37,10 +46,6 @@ class _PekerjaPageState extends State<PekerjaPage> {
   }
 
   void _showAddForm(BuildContext context) {
-    // Navigator.push(
-    //   context,
-    //   MaterialPageRoute(builder: (context) => AddFormPekerja()),
-    // );
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
@@ -94,9 +99,15 @@ class _PekerjaPageState extends State<PekerjaPage> {
               onPressed: () async {
                 if(_formKey.currentState!.validate()) {
                   try {
-                    Worker worker = Worker(_nameController.text,_jobController.text, _workHourController.text, _salaryController.text, _durationController.text,);
+                    Worker worker = Worker(widget.user_id, _nameController.text,_jobController.text, _workHourController.text, _salaryController.text, _durationController.text,);
                     await DatabaseHelper().insertWorker(worker);
+                    updateWorkerList();
                     Navigator.of(context).pop();
+                    _nameController.clear();
+                    _jobController.clear();
+                    _workHourController.clear();
+                    _salaryController.clear();
+                    _durationController.clear();
                   } catch (e) {
                     print(e);
                   }
@@ -120,16 +131,16 @@ class _PekerjaPageState extends State<PekerjaPage> {
           Expanded(
             child: ListView.builder(
               padding: const EdgeInsets.all(16.0),
-              itemCount: _jobList.length,
+              itemCount: workerCount,
               itemBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 10.0),
                   child: PekerjaContainer(
-                    workerName: _jobList[index][0],
-                    jobTitle: _jobList[index][1],
-                    jobTime: _jobList[index][2],
-                    money: _jobList[index][3],
-                    duration: _jobList[index][4],
+                    workerName: workers[index].name,
+                    jobTitle: workers[index].job,
+                    jobTime: workers[index].workHour,
+                    money: workers[index].salary,
+                    duration: workers[index].contractDuration,
                   ),
                 );
               },
@@ -140,5 +151,13 @@ class _PekerjaPageState extends State<PekerjaPage> {
       floatingActionButton: AddButton(onPressed: () => _showAddForm(context)),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
+  }
+
+  void updateWorkerList() async {
+    List<Worker> newWorkers = await db.getWorkersByUserId(widget.user_id);
+    setState(() {
+      workers = newWorkers;
+      workerCount = workers.length;
+    });
   }
 }

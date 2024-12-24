@@ -8,10 +8,12 @@ import 'umkm_pekerja_page.dart';
 class UMKMHomePage extends StatefulWidget {
   const UMKMHomePage({
     super.key,
+    required this.user_id,
     required this.username,
     required this.password,
   });
 
+  final int user_id;
   final String username;
   final String password;
 
@@ -221,7 +223,7 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
           : _currentIndex == 3
               ? ProfilePage()
               : _currentIndex == 2
-                  ? PekerjaPage()
+                  ? PekerjaPage(widget.user_id)
                   : _currentIndex == 1
                       ? KontrakPage()
                       : body(),
