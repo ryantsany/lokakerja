@@ -26,7 +26,7 @@ class KontrakPage2 extends StatelessWidget {
                 text: "Lowongan aktif",
                 isActive: false,
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => KontrakPage()));
+                  //Navigator.push(context, MaterialPageRoute(builder: (context) => KontrakPage()));//
                 },
               ),
             ],

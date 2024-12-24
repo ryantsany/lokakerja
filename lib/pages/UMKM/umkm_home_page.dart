@@ -136,7 +136,7 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                     jobTime: _jobList[index][1],
                     jobDistance: _jobList[index][2],
                     money: _jobList[index][3],
-                    imgPath: "assets/keripikkoki.jpeg",
+                    
                   );
                 },
               ),
@@ -225,7 +225,7 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
               : _currentIndex == 2
                   ? PekerjaPage(widget.user_id)
                   : _currentIndex == 1
-                      ? KontrakPage()
+                      ? KontrakPage(widget.user_id)
                       : body(),
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,

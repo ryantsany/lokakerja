@@ -140,7 +140,7 @@ class _PekerjaHomePageState extends State<PekerjaHomePage> {
                 jobTime: _jobList[index][1],
                 jobDistance: _jobList[index][2],
                 money: _jobList[index][3],
-                imgPath: "assets/keripikkoki.jpeg",
+                
               );
             },
           ),

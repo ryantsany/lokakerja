@@ -4,19 +4,21 @@ import 'package:lokakerja/widgets/job_container.dart';
 import 'package:lokakerja/widgets/add_button.dart';
 import 'package:lokakerja/model/contract.dart';
 import 'package:lokakerja/model/db_helper.dart';
+import 'package:sqflite/sqflite.dart';
 
 class KontrakPage extends StatefulWidget {
+  
+  const KontrakPage(this.user_id);
+  final int user_id;
+  
   @override
   _KontrakPageState createState() => _KontrakPageState();
 }
 
 class _KontrakPageState extends State<KontrakPage> {
-  final List<List<String>> _jobList = [
-    ["Fotografer", "07.00 - 16.00", "1 Bulan", "Rp 3.000.000,00"],
-    ["Desain Logo", "08.00 - 17.00", "1 Bulan", "Rp 3.000.000,00"],
-    ["Membuat Web", "09.00 - 18.00", "1 Bulan", "Rp 3.000.000,00"],
-    ["Videografer", "10.00 - 19.00", "1 Bulan", "Rp 3.000.000,00"],
-  ];
+  DatabaseHelper db = DatabaseHelper();
+  List<Contract> contracts = <Contract>[];
+  int count = 0;
 
   final _formKey = GlobalKey<FormState>();
   final _jobController = TextEditingController();
@@ -25,15 +27,21 @@ class _KontrakPageState extends State<KontrakPage> {
   final _salaryController = TextEditingController();
 
   @override
-  void dispose() {
-    _jobController.dispose();
-    _jobDurationController.dispose();
-    _contractDurationController.dispose();
-    _salaryController.dispose();
-    super.dispose();
+  void initState() {
+    super.initState();
+    updateListView();
+  }
+
+  @override
+  void _resetForm() {
+    _jobController.clear();
+    _jobDurationController.clear();
+    _contractDurationController.clear();
+    _salaryController.clear();
   }
 
   void _showAddForm(BuildContext context) {
+    _resetForm();
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -106,6 +114,7 @@ class _KontrakPageState extends State<KontrakPage> {
               if (_formKey.currentState!.validate()) {
                 try {
                   Contract contract = Contract(
+                    widget.user_id,
                     _jobController.text,
                     _jobDurationController.text,
                     _contractDurationController.text,
@@ -113,6 +122,7 @@ class _KontrakPageState extends State<KontrakPage> {
                   );
                   await DatabaseHelper().insertContract(contract);
                   Navigator.of(context).pop();
+                  updateListView();
                 } catch (e) {
                   print(e);
                 }
@@ -142,14 +152,13 @@ class _KontrakPageState extends State<KontrakPage> {
                   mainAxisSpacing: 10,
                   mainAxisExtent: 175,
                 ),
-                itemCount: _jobList.length,
+                itemCount: contracts.length,
                 itemBuilder: (context, index) {
                   return JobContainer(
-                    jobTitle: _jobList[index][0],
-                    jobTime: _jobList[index][1],
-                    jobDistance: _jobList[index][2],
-                    money: _jobList[index][3],
-                    imgPath: "assets/keripikkoki.jpeg",
+                    jobTitle: contracts[index].job,
+                    jobTime: contracts[index].jobDuration,
+                    jobDistance: contracts[index].contractDuration,
+                    money: contracts[index].salary,
                   );
                 },
               ),
@@ -160,5 +169,13 @@ class _KontrakPageState extends State<KontrakPage> {
       floatingActionButton: AddButton(onPressed: () => _showAddForm(context)),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
+  }
+
+  void updateListView() async {
+    List<Contract> newContract = await db.getContract(widget.user_id);
+    setState(() {
+      contracts = newContract;
+      count = newContract.length;
+    });
   }
 }

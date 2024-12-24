@@ -41,10 +41,14 @@ class DatabaseHelper {
   String kontrakTable = '''
   CREATE TABLE ${Contract.TABLE_CONTRACT}(
     ${Contract.COLUMN_ID} INTEGER PRIMARY KEY AUTOINCREMENT,
+    ${Contract.COLUMN_USER_ID} INTEGER,
     ${Contract.COLUMN_JOB} TEXT,
     ${Contract.COLUMN_JOB_DURATION} TEXT,
     ${Contract.COLUMN_CONTRACT_DURATION} TEXT,
-    ${Contract.COLUMN_SALARY} TEXT
+    ${Contract.COLUMN_SALARY} TEXT,
+    FOREIGN KEY (${Contract.COLUMN_USER_ID}) 
+    REFERENCES ${User.TABLE_USER} (${User.COLUMN_ID})
+    ON DELETE CASCADE
   )
   ''';
 
@@ -61,8 +65,8 @@ class DatabaseHelper {
       onCreate: (db, version) async {
         await db.execute(userTable);
         await db.execute(workerTable);
-        await db.execute('PRAGMA foreign_keys = ON');
         await db.execute(kontrakTable);
+        await db.execute('PRAGMA foreign_keys = ON');
       },
       onConfigure: (db) async{
         await db.execute('PRAGMA foreign_keys = ON');
@@ -122,18 +126,16 @@ class DatabaseHelper {
     return await db.insert(Contract.TABLE_CONTRACT, contract.toMap());
   }
 
-  Future<Contract?> getContract(String job, String jobDuration, String contractDuration, String salary) async {
-    Database db = await database;
-    List<Map<String, dynamic>> results = await db.query(
-      Contract.TABLE_CONTRACT,
-      where: '${Contract.COLUMN_JOB} = ? AND ${Contract.COLUMN_JOB_DURATION} = ? AND ${Contract.COLUMN_CONTRACT_DURATION} = ? AND ${Contract.COLUMN_SALARY} = ?',
-      whereArgs: [job, jobDuration, contractDuration, salary],
-    );
-    if (results.isNotEmpty) {
-      return Contract.fromMap(results.first);
-    }
-    return null;
+  Future<List<Contract>> getContract(int userId) async {
+  Database db = await database;
+  List<Map<String, dynamic>> results = await db.query(
+    'contract',
+    where: 'user_id = ?',
+    whereArgs: [userId],
+  );
+  return results.map((results) => Contract.fromMap(results)).toList();
   }
+
 
   Future<List<Map<String, dynamic>>> getContracts() async {
     Database db = await database;
