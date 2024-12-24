@@ -120,6 +120,16 @@ class DatabaseHelper {
     return workers.map((worker) => Worker.fromMap(worker)).toList();
   }
 
+  Future<int> countWorkersByUserId(int userId) async {
+    Database db = await database;
+    List<Map<String, dynamic>> workers = await db.query(
+      'worker',
+      where: 'user_id = ?',
+      whereArgs: [userId],
+    );
+    return workers.length;
+  }
+
   // Method untuk kontrak
   Future<int> insertContract(Contract contract) async {
     Database db = await database;
@@ -140,5 +150,15 @@ class DatabaseHelper {
   Future<List<Map<String, dynamic>>> getContracts() async {
     Database db = await database;
     return await db.query(Contract.TABLE_CONTRACT);
+  }
+
+  Future<int> countContractsByUserId(int userId) async {
+    Database db = await database;
+    List<Map<String, dynamic>> contracts = await db.query(
+      'contract',
+      where: 'user_id = ?',
+      whereArgs: [userId],
+    );
+    return contracts.length;
   }
 }

@@ -1,3 +1,4 @@
+import 'package:lokakerja/model/db_helper.dart';
 import 'package:lokakerja/widgets/job_container.dart';
 import 'package:lokakerja/widgets/umkm_bottom_nav.dart';
 import 'package:flutter/material.dart';
@@ -25,11 +26,20 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
   int _currentIndex = 0;
 
   final List<List<String>> _jobList = [
-    ["Fotografer", "07.00 - 16.00", "Rp 3.000.000,00", "3km"],
-    ["Desain Logo", "08.00 - 17.00", "Rp 3.000.000,00", "4km"],
-    ["Membuat Web", "09.00 - 18.00", "Rp 3.000.000,00", "5km"],
-    ["Videografer", "10.00 - 19.00", "Rp 3.000.000,00", "6km"],
+    ["Pengecatan", "1 Bulan", "5 KM", "Rp. 1.000.000"],
+    ["Pembuatan Website", "2 Bulan", "10 KM", "Rp. 2.000.000"],
+    ["Pembuatan Logo", "1 Minggu", "2 KM", "Rp. 500.000"],
+    ["Pembuatan Aplikasi", "3 Bulan", "15 KM", "Rp. 3.000.000"],
   ];
+
+  int workerCount = 0;
+  int contractCount = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    updateCount();
+  }
 
   Widget body() {
     return ListView(
@@ -51,8 +61,8 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       "Jumlah Karyawan",
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -62,9 +72,9 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                     ),
                     SizedBox(height: 5),
                     Text(
-                      "20",
+                      workerCount.toString(),
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 40,
                       ),
@@ -82,8 +92,8 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: const [
-                    Text(
+                  children: [
+                    const Text(
                       "Kontrak kerja Aktif",
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -91,11 +101,11 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
                         fontSize: 15,
                       ),
                     ),
-                    SizedBox(height: 5),
+                    const SizedBox(height: 5),
                     Text(
-                      "20",
+                      contractCount.toString(),
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 40,
                       ),
@@ -230,11 +240,23 @@ class _UMKMHomePageState extends State<UMKMHomePage> {
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: _currentIndex,
         onTap: (index) {
+          if(index == 0){
+            updateCount();
+          }
           setState(() {
             _currentIndex = index;
           });
         },
       ),
     );
+  }
+
+  void updateCount() async {
+    int newWorkerCount = await DatabaseHelper().countWorkersByUserId(widget.user_id);
+    int newContractCount = await DatabaseHelper().countContractsByUserId(widget.user_id);
+    setState(() {
+      workerCount = newWorkerCount;
+      contractCount = newContractCount;
+    });
   }
 }
