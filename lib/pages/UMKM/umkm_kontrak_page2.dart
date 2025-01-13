@@ -4,7 +4,6 @@ import 'package:lokakerja/widgets/job_container.dart';
 import 'package:lokakerja/widgets/add_button.dart';
 import 'package:lokakerja/model/contract.dart';
 import 'package:lokakerja/model/db_helper.dart';
-import 'package:sqflite/sqflite.dart';
 
 class KontrakPage extends StatefulWidget {
   
