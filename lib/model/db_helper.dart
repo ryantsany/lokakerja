@@ -1,8 +1,12 @@
 import 'package:lokakerja/config.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
+// import 'package:sqlite3_flutter_libs/sqlite3_flutter_libs.dart';
 import 'package:lokakerja/model/user.dart';
 import 'package:lokakerja/model/worker.dart';
 import 'package:lokakerja/model/contract.dart';
+import 'dart:io';
+import 'package:path/path.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper _instance = DatabaseHelper._internal();
@@ -59,19 +63,44 @@ class DatabaseHelper {
   }
 
   Future<Database> _initDatabase() async {
-    return await openDatabase(
-      "lokakerja.db",
-      version: 1,
-      onCreate: (db, version) async {
-        await db.execute(userTable);
-        await db.execute(workerTable);
-        await db.execute(kontrakTable);
-        await db.execute('PRAGMA foreign_keys = ON');
-      },
-      onConfigure: (db) async{
-        await db.execute('PRAGMA foreign_keys = ON');
-      },
-    );
+    if (Platform.isWindows || Platform.isLinux) {
+      sqfliteFfiInit();
+      databaseFactory = databaseFactoryFfi;
+      // Get a location using getDatabasesPath
+      var databasesPath = await getDatabasesPath();
+      String path = join(databasesPath, 'lokakerja.db');
+
+      // Delete the database if it exists
+      await databaseFactory.deleteDatabase(path);
+
+      return await databaseFactory.openDatabase(
+        "lokakerja.db", options: OpenDatabaseOptions(
+        version: 1,
+        onCreate: (db, version) async {
+          await db.execute(userTable);
+          await db.execute(workerTable);
+          await db.execute(kontrakTable);
+          await db.execute('PRAGMA foreign_keys = ON');
+        },
+        onConfigure: (db) async{
+          await db.execute('PRAGMA foreign_keys = ON');
+        },
+      ));
+    } else {
+        return await openDatabase(
+        "lokakerja.db",
+        version: 1,
+        onCreate: (db, version) async {
+          await db.execute(userTable);
+          await db.execute(workerTable);
+          await db.execute(kontrakTable);
+          await db.execute('PRAGMA foreign_keys = ON');
+        },
+        onConfigure: (db) async{
+          await db.execute('PRAGMA foreign_keys = ON');
+        },
+      );
+    }
   }
 
   // Methods untuk user
