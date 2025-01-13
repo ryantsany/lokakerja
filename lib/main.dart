@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sqflite/sqflite.dart';
 import 'pages/auth_page.dart';
 void main() {
   runApp(const MainApp());
